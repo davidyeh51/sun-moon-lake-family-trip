@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>日月潭兩天一夜親子慢活自駕遊 (9/18~9/19) | 力麗溫德姆溫泉酒店 ‧ 親子攻略</title>
-  <meta name="description" content="專為夫妻兩人與17個月大女兒打造的日月潭兩天一夜親子自駕慢活行程。高雄出發、國道休息站、力麗溫德姆溫泉酒店、向山遊客中心、日月潭纜車、妮娜巧克力城堡、伊達邵老街美食全收錄。">
+  <title>日月潭兩天一夜親子慢活自駕遊 (9/18~9/19) | 力麗溫德姆 ‧ 爸爸遠端辦公 ‧ 親子攻略</title>
+  <meta name="description" content="專為夫妻兩人與17個月大女兒打造的日月潭兩天一夜親子自駕慢活行程。高雄出發、國道休息站星巴克辦公、力麗溫德姆溫泉酒店泳池放電、向山清水模、惠蓀咖啡景觀、日月潭纜車、妮娜巧克力城堡與在地高評價美食全收錄。">
   
   <!-- Tailwind CSS CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
@@ -63,6 +63,16 @@
       border-radius: 1rem;
       z-index: 10;
     }
+    .img-zoom-container {
+      overflow: hidden;
+      border-radius: 0.875rem;
+    }
+    .img-zoom-container img {
+      transition: transform 0.5s ease;
+    }
+    .img-zoom-container:hover img {
+      transform: scale(1.05);
+    }
     @media print {
       .no-print { display: none !important; }
       .print-full { width: 100% !important; margin: 0 !important; }
@@ -91,7 +101,7 @@
           <a href="#day1" class="px-3 py-2 rounded-lg hover:text-lake-600 hover:bg-lake-50 transition">Day 1 行程</a>
           <a href="#day2" class="px-3 py-2 rounded-lg hover:text-lake-600 hover:bg-lake-50 transition">Day 2 行程</a>
           <a href="#hotel" class="px-3 py-2 rounded-lg hover:text-lake-600 hover:bg-lake-50 transition">溫德姆溫泉</a>
-          <a href="#baby-tips" class="px-3 py-2 rounded-lg hover:text-lake-600 hover:bg-lake-50 transition">17M寶寶攻略</a>
+          <a href="#baby-tips" class="px-3 py-2 rounded-lg hover:text-lake-600 hover:bg-lake-50 transition">17M寶寶清單</a>
           <a href="#map-section" class="px-3 py-2 rounded-lg hover:text-lake-600 hover:bg-lake-50 transition">地圖導航</a>
           <button onclick="window.print()" class="ml-2 bg-lake-600 hover:bg-lake-700 text-white px-3.5 py-1.5 rounded-lg text-xs flex items-center space-x-1 shadow-sm transition">
             <i class="fa-solid fa-print"></i>
@@ -127,14 +137,14 @@
     <div class="absolute inset-0 opacity-20 bg-[radial-gradient(#38bdf8_1px,transparent_1px)] [background-size:16px_16px]"></div>
     <div class="relative max-w-5xl mx-auto px-4 sm:px-6 text-center">
       <div class="inline-flex items-center space-x-2 bg-white/10 backdrop-blur-md px-4 py-1.5 rounded-full text-xs md:text-sm font-medium text-cyan-200 mb-6 border border-white/15">
-        <i class="fa-solid fa-baby-carriage"></i>
-        <span>高舒適 ‧ 100% 嬰兒推車無障礙 ‧ 慢活定點自駕遊</span>
+        <i class="fa-solid fa-laptop-code text-amber-300 mr-1"></i>
+        <span>爸爸彈性遠端上班 ‧ 100% 嬰兒推車友善 ‧ 慢活定點自駕遊</span>
       </div>
       <h1 class="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight text-white mb-4 leading-tight">
         日月潭兩天一夜 ‧ 親子溫泉假期
       </h1>
       <p class="text-base sm:text-lg text-slate-200 max-w-2xl mx-auto leading-relaxed mb-8">
-        夫妻兩人帶著 17 個月大寶貝女兒，開車從高雄出發，探訪絕美清水模向山、米其林纜車全景、伊達邵在地邵族風味，下榻全新頂級溫德姆私湯飯店！
+        夫妻兩人帶著 17 個月大寶貝女兒自駕出發！爸爸兼顧工作與家庭（星巴克 ＆ 飯店房間舒適辦公），媽媽與女兒暢遊向山、惠蓀咖啡景觀、溫德姆泳池與老街高評價手創美食！
       </p>
 
       <!-- Key Trip Info Grid -->
@@ -147,17 +157,17 @@
         <div class="bg-white/10 backdrop-blur-md rounded-xl p-3.5 border border-white/10">
           <div class="text-xs text-lake-200 font-medium">家庭成員</div>
           <div class="text-base sm:text-lg font-bold text-white mt-0.5">2大 + 1幼兒</div>
-          <div class="text-[11px] text-slate-300">女兒 17 個月大 (推車出行)</div>
+          <div class="text-[11px] text-slate-300">女兒 17 個月大 (午餐後午睡)</div>
         </div>
         <div class="bg-white/10 backdrop-blur-md rounded-xl p-3.5 border border-white/10">
           <div class="text-xs text-lake-200 font-medium">住宿飯店</div>
           <div class="text-base sm:text-lg font-bold text-white mt-0.5 truncate">力麗溫德姆酒店</div>
-          <div class="text-[11px] text-slate-300">伊達邵碼頭旁 ‧ 客房私湯</div>
+          <div class="text-[11px] text-slate-300">伊達邵核心 ‧ 泳池/私湯/辦公</div>
         </div>
         <div class="bg-white/10 backdrop-blur-md rounded-xl p-3.5 border border-white/10">
-          <div class="text-xs text-lake-200 font-medium">自駕中繼</div>
-          <div class="text-base sm:text-lg font-bold text-white mt-0.5">東山 ＆ 古坑</div>
-          <div class="text-[11px] text-slate-300">國道3號五星級服務區</div>
+          <div class="text-xs text-lake-200 font-medium">工作與放電平衡</div>
+          <div class="text-base sm:text-lg font-bold text-white mt-0.5">星巴克 & 房內工作</div>
+          <div class="text-[11px] text-slate-300">母女泳池放電 ‧ 爸爸安心上班</div>
         </div>
       </div>
     </div>
@@ -189,41 +199,41 @@
     <!-- Overview Section -->
     <section id="overview" class="pt-2">
       <div class="text-center max-w-3xl mx-auto mb-10">
-        <h2 class="text-2xl sm:text-3xl font-bold text-slate-900">行程核心設計理念</h2>
+        <h2 class="text-2xl sm:text-3xl font-bold text-slate-900">行程核心設計理念（工作與親子兼顧）</h2>
         <div class="w-12 h-1 bg-lake-500 mx-auto mt-3 rounded-full"></div>
         <p class="text-slate-600 mt-3 text-sm sm:text-base">
-          針對 17 個月大幼兒特質：小腿力正旺盛、喜歡看魚看動物、需坐推車、每天下午需回飯店午睡充電，全行程無陡坡階梯、定點放鬆！
+          專為大衛一家量身重構：爸爸兼具遠端辦公需求，小女兒午餐後先午睡、入住後直接衝泳池，避開向山微波雷餐，品嚐在地最高評價手創料理！
         </p>
       </div>
 
       <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
         <div class="bg-white rounded-2xl p-6 border border-slate-200 shadow-sm hover:shadow-md transition">
-          <div class="w-12 h-12 rounded-xl bg-blue-100 text-blue-600 flex items-center justify-center text-xl mb-4">
-            <i class="fa-solid fa-wheelchair"></i>
-          </div>
-          <h3 class="text-lg font-bold text-slate-900 mb-2">100% 嬰兒推車友善</h3>
-          <p class="text-sm text-slate-600 leading-relaxed">
-            從向山清水模緩坡懸臂平台、伊達邵水上親水木棧道、日月潭纜車站到妮娜巧克力城堡，全動線皆具備無障礙電梯與平整路面，推車一路暢行。
-          </p>
-        </div>
-
-        <div class="bg-white rounded-2xl p-6 border border-slate-200 shadow-sm hover:shadow-md transition">
           <div class="w-12 h-12 rounded-xl bg-amber-100 text-amber-600 flex items-center justify-center text-xl mb-4">
-            <i class="fa-solid fa-gas-pump"></i>
+            <i class="fa-solid fa-briefcase"></i>
           </div>
-          <h3 class="text-lg font-bold text-slate-900 mb-2">國道中繼雙服務區</h3>
+          <h3 class="text-lg font-bold text-slate-900 mb-2">爸爸專屬工作時段</h3>
           <p class="text-sm text-slate-600 leading-relaxed">
-            去程停靠<strong>東山服務區</strong>（全台唯一海底隧道大水族箱看魚放電）；回程停靠<strong>古坑服務區</strong>（水舞音樂花園與古坑精品咖啡），寶寶換尿布不哭鬧。
+            去程於東山服務區<strong>星巴克</strong>舒適辦公 1 小時；下午入住溫德姆後，在寬敞客房（高速 Wi-Fi、辦公書桌）安靜上班，時間妥善切割不耽誤工作。
           </p>
         </div>
 
         <div class="bg-white rounded-2xl p-6 border border-slate-200 shadow-sm hover:shadow-md transition">
-          <div class="w-12 h-12 rounded-xl bg-emerald-100 text-emerald-600 flex items-center justify-center text-xl mb-4">
-            <i class="fa-solid fa-hot-tub-person"></i>
+          <div class="w-12 h-12 rounded-xl bg-blue-100 text-blue-600 flex items-center justify-center text-xl mb-4">
+            <i class="fa-solid fa-water-ladder"></i>
           </div>
-          <h3 class="text-lg font-bold text-slate-900 mb-2">五星溫德姆極致享受</h3>
+          <h3 class="text-lg font-bold text-slate-900 mb-2">午睡後直奔飯店泳池</h3>
           <p class="text-sm text-slate-600 leading-relaxed">
-            客房獨立碳酸氫鈉泉美人湯溫泉、免費暢玩步行2分鐘的「RURUZAZA 魯魯札札咖啡親子館」、翌日早餐營業至中午 12:00（早午餐規格免趕早）。
+            17 個月大女兒在午餐後（向山散步與車程）即先午睡 1 小時充飽電；Check-in 後由媽媽帶著活力滿滿的寶貝直接前往飯店 3F <strong>戶外水療池與兒童戲水池</strong>盡情玩水！
+          </p>
+        </div>
+
+        <div class="bg-white rounded-2xl p-6 border border-slate-200 shadow-sm hover:shadow-md transition">
+          <div class="w-12 h-12 rounded-xl bg-rose-100 text-rose-600 flex items-center justify-center text-xl mb-4">
+            <i class="fa-solid fa-star"></i>
+          </div>
+          <h3 class="text-lg font-bold text-slate-900 mb-2">避雷美食 ＆ 惠蓀絕美賞景</h3>
+          <p class="text-sm text-slate-600 leading-relaxed">
+            午餐安排現點現做優質餐廳（如超高人氣「蠻荒咖啡」）；隨後前往向山漫步，並在「惠蓀咖啡向山館」專注品嚐手沖咖啡、所長茶葉蛋與無敵落地窗湖景！晚餐更安排開車 15 分鐘內頂級餐廳。
           </p>
         </div>
       </div>
@@ -234,10 +244,10 @@
       <div class="flex flex-col sm:flex-row sm:items-center justify-between border-b-2 border-lake-500 pb-3 gap-2">
         <div>
           <span class="badge-pill bg-lake-100 text-lake-800 font-bold text-sm">第一天 DAY 1</span>
-          <h2 class="text-2xl sm:text-3xl font-extrabold text-slate-900 mt-1">9/18 (五) 湖畔慢活 ‧ 溫泉舒享之旅</h2>
+          <h2 class="text-2xl sm:text-3xl font-extrabold text-slate-900 mt-1">9/18 (五) 湖畔漫活 ‧ 溫泉舒享 ＆ 爸爸行動工作</h2>
         </div>
         <div class="text-sm text-slate-500 font-medium">
-          <i class="fa-solid fa-route text-lake-600 mr-1"></i> 高雄 ➔ 東山服務區 ➔ 向山遊客中心 ➔ 力麗溫德姆
+          <i class="fa-solid fa-route text-lake-600 mr-1"></i> 高雄 ➔ 東山星巴克 ➔ 蠻荒午餐 ➔ 向山惠蓀 ➔ 溫德姆泳池 ➔ 麓司岸晚餐
         </div>
       </div>
 
@@ -247,11 +257,11 @@
           <div class="w-8 h-8 rounded-lg bg-amber-50 flex items-center justify-center font-bold">
             <i class="fa-regular fa-sun text-lg"></i>
           </div>
-          <h3 class="text-xl font-bold text-slate-900">早上時段 (Morning) ‧ 啟程自駕與清水模散步</h3>
+          <h3 class="text-xl font-bold text-slate-900">早上時段 (Morning) ‧ 啟程自駕、爸爸星巴克工作 ＆ 水族隧道看魚</h3>
         </div>
 
         <!-- Schedule Items -->
-        <div class="space-y-6 border-l-2 border-amber-200 pl-4 sm:pl-6 ml-3">
+        <div class="space-y-8 border-l-2 border-amber-200 pl-4 sm:pl-6 ml-3">
           
           <!-- Item 1: Departure -->
           <div class="relative">
@@ -261,15 +271,15 @@
               <span class="badge-pill bg-slate-100 text-slate-700">自駕啟程</span>
               <span class="text-sm font-semibold text-slate-800">高雄出發（國道 10 號接國道 3 號北上）</span>
             </div>
-            <p class="text-sm text-slate-600">避開平日早尖峰，國3路況順暢，平穩駕駛讓 17 個月大寶寶在車上先聽兒歌或小歇。</p>
+            <p class="text-sm text-slate-600">避開早尖峰車潮，國道 3 號路況平穩順暢，單程約 1 小時 15 分鐘輕鬆抵達台南東山。</p>
           </div>
 
-          <!-- Item 2: Rest Stop -->
+          <!-- Item 2: Rest Stop (Starbucks + Aquarium) -->
           <div class="relative">
             <div class="absolute -left-[25px] sm:-left-[33px] top-1.5 w-4 h-4 rounded-full bg-lake-500 border-4 border-white"></div>
             <div class="flex flex-wrap items-center gap-2 mb-1">
-              <span class="font-bold text-lake-700 text-base">09:45 - 10:30</span>
-              <span class="badge-pill bg-cyan-100 text-cyan-800 font-semibold"><i class="fa-solid fa-fish mr-1"></i>國道休息站</span>
+              <span class="font-bold text-lake-700 text-base">09:45 - 10:45</span>
+              <span class="badge-pill bg-cyan-100 text-cyan-800 font-semibold"><i class="fa-solid fa-gas-pump mr-1"></i>國道休息站</span>
               <h4 class="text-lg font-bold text-slate-900">東山服務區 (國道3號 319K)</h4>
               <span class="text-xs font-semibold bg-amber-100 text-amber-800 px-2 py-0.5 rounded">4.2 ★ (21,000+評價)</span>
             </div>
@@ -277,53 +287,99 @@
               <i class="fa-solid fa-location-dot mr-1 text-slate-400"></i> 台南市東山區枋子林74-6號
             </div>
             
+            <!-- Photo Grid -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-3">
+              <div class="img-zoom-container">
+                <img src="https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb?auto=format&fit=crop&w=1200&q=80" alt="星巴克行動辦公" class="w-full h-44 object-cover" loading="lazy">
+                <div class="text-[11px] text-slate-500 bg-slate-100 px-2.5 py-1 text-center font-medium">爸爸在星巴克門市筆電辦公 (插座與Wi-Fi)</div>
+              </div>
+              <div class="img-zoom-container">
+                <img src="https://images.unsplash.com/photo-1522069169874-c58ec4b76be5?auto=format&fit=crop&w=1200&q=80" alt="東山海底隧道水族箱" class="w-full h-44 object-cover" loading="lazy">
+                <div class="text-[11px] text-slate-500 bg-slate-100 px-2.5 py-1 text-center font-medium">全台唯一海底水族隧道 ‧ 17M寶寶看大魚放電</div>
+              </div>
+            </div>
+
             <div class="bg-slate-50 rounded-xl p-4 space-y-3 text-sm border border-slate-100">
-              <div>
-                <span class="font-semibold text-lake-700"><i class="fa-solid fa-baby mr-1"></i> 親子亮點：</span>
-                全台休息站唯一的「<strong>海底隧道大水族箱</strong>」，17個月大的寶寶看著巨型大魚游過會非常興奮驚喜！設有寬敞五星級哺集乳室、熱水機、無障礙親子廁所與室外大榕樹休閒步道，讓寶寶下車放電伸展、換尿布、喝點水或米餅點心。
+              <div class="bg-amber-50 border border-amber-200 rounded-lg p-3 text-amber-950 text-xs">
+                <strong><i class="fa-solid fa-laptop-code text-amber-600 mr-1"></i> 爸爸專屬工作站：</strong>
+                東山休息站內設有大型<strong>星巴克門市</strong>，座位區附設充電插座與高速無線網路。爸爸可在這安靜專心處理公事、回覆郵件與連線工作約 1 小時，手邊一杯熱拿鐵維持清晰思緒。
               </div>
               <div>
-                <span class="font-semibold text-slate-700"><i class="fa-solid fa-utensils mr-1"></i> 美食推薦：</span>
-                所長茶葉蛋、周氏蝦捲、東山在地小吃、星巴克。
-              </div>
-              <div class="flex flex-wrap gap-2 pt-1">
-                <a href="https://www.google.com/maps/search/?api=1&query=東山服務區" target="_blank" class="inline-flex items-center text-xs bg-white hover:bg-slate-100 text-slate-700 border border-slate-300 px-2.5 py-1 rounded-lg font-medium transition">
-                  <i class="fa-solid fa-map-location-dot text-lake-600 mr-1.5"></i> Google 地圖
-                </a>
+                <span class="font-semibold text-lake-700"><i class="fa-solid fa-baby mr-1"></i> 媽媽與女兒行程：</span>
+                媽媽帶著 17 個月大女兒參觀全台休息站唯一的「<strong>海底隧道大水族箱</strong>」，巨型魚群悠游讓小寶寶好奇地手指著大魚目不轉睛；隨後前往五星級獨立哺集乳室換尿布、補充溫水或小米餅，戶外大榕樹步道輕鬆散步伸展筋骨。
               </div>
             </div>
           </div>
 
-          <!-- Item 3: Xiangshan Visitor Center -->
+          <!-- Item 3: Day 1 Lunch (Alternative to Huisun) -->
           <div class="relative">
             <div class="absolute -left-[25px] sm:-left-[33px] top-1.5 w-4 h-4 rounded-full bg-emerald-500 border-4 border-white"></div>
             <div class="flex flex-wrap items-center gap-2 mb-1">
-              <span class="font-bold text-emerald-700 text-base">11:45 - 14:00</span>
-              <span class="badge-pill bg-emerald-100 text-emerald-800 font-semibold"><i class="fa-solid fa-camera mr-1"></i>必訪地標 & 午餐</span>
-              <h4 class="text-lg font-bold text-slate-900">向山行政暨遊客中心 ＆ 惠蓀咖啡</h4>
+              <span class="font-bold text-emerald-700 text-base">12:00 - 13:15</span>
+              <span class="badge-pill bg-emerald-100 text-emerald-800 font-semibold"><i class="fa-solid fa-utensils mr-1"></i>第一天美味午餐推薦</span>
+              <h4 class="text-lg font-bold text-slate-900">蠻荒咖啡 Desolate Coffee（現點現做 ‧ 避開微波雷餐）</h4>
+              <span class="text-xs font-semibold bg-amber-100 text-amber-800 px-2 py-0.5 rounded">4.2 ★ (7,500+評價)</span>
+            </div>
+            <div class="text-xs text-slate-500 mb-2">
+              <i class="fa-solid fa-location-dot mr-1 text-slate-400"></i> 南投縣魚池鄉文化巷41號（台21線上，距向山僅 6-8 分鐘車程）
+            </div>
+
+            <!-- Photo Grid -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-3">
+              <div class="img-zoom-container">
+                <img src="https://images.unsplash.com/photo-1554118811-1e0d58224f24?auto=format&fit=crop&w=1200&q=80" alt="絕美白色玻璃景觀餐廳" class="w-full h-44 object-cover" loading="lazy">
+                <div class="text-[11px] text-slate-500 bg-slate-100 px-2.5 py-1 text-center font-medium">日月潭最美白色透明玻璃建築 ‧ 採光極佳</div>
+              </div>
+              <div class="img-zoom-container">
+                <img src="https://images.unsplash.com/photo-1551183053-bf91a1d81141?auto=format&fit=crop&w=1200&q=80" alt="現做義大利麵與清爽料理" class="w-full h-44 object-cover" loading="lazy">
+                <div class="text-[11px] text-slate-500 bg-slate-100 px-2.5 py-1 text-center font-medium">主廚現做義大利麵、燉飯與低油鹽料理</div>
+              </div>
+            </div>
+
+            <div class="bg-slate-50 rounded-xl p-4 space-y-3 text-sm border border-slate-100">
+              <div>
+                <span class="font-semibold text-emerald-700"><i class="fa-solid fa-circle-check mr-1"></i> 為什麼不吃向山惠蓀咖啡正餐？</span>
+                根據眾多旅人與部落客實訪評測（如霧痴實訪記錄），向山惠蓀咖啡的熟食主餐（如微波燻雞麵、清淡咖哩飯、乾硬肉捲）為調理包加熱，品質常差強人意。因此<strong>強烈建議將午餐安排在評價極高的蠻荒咖啡</strong>，享用主廚現做的蒜香清炒海鮮義大利麵、舒肥雞肉沙拉、松露野菇燉飯。
+              </div>
+              <div class="text-xs text-slate-600">
+                <i class="fa-solid fa-baby-carriage text-lake-600 mr-1"></i> 店內寬敞明亮、全無障礙斜坡動線、備有充足兒童安全座椅與餐具，用餐氛圍極度舒適。
+              </div>
+            </div>
+          </div>
+
+          <!-- Item 4: Xiangshan Visitor Center & Huisun Coffee View -->
+          <div class="relative">
+            <div class="absolute -left-[25px] sm:-left-[33px] top-1.5 w-4 h-4 rounded-full bg-blue-500 border-4 border-white"></div>
+            <div class="flex flex-wrap items-center gap-2 mb-1">
+              <span class="font-bold text-blue-700 text-base">13:15 - 14:15</span>
+              <span class="badge-pill bg-blue-100 text-blue-800 font-semibold"><i class="fa-solid fa-camera mr-1"></i>向山清水模 ＆ 惠蓀咖啡賞景</span>
+              <h4 class="text-lg font-bold text-slate-900">向山行政遊客中心 ＆ 台灣惠蓀咖啡（避雷賞景攻略）</h4>
               <span class="text-xs font-semibold bg-amber-100 text-amber-800 px-2 py-0.5 rounded">4.5 ★ (32,000+評價)</span>
             </div>
             <div class="text-xs text-slate-500 mb-2">
               <i class="fa-solid fa-location-dot mr-1 text-slate-400"></i> 南投縣魚池鄉中山路599號
             </div>
 
+            <!-- Photo Grid -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-3">
+              <div class="img-zoom-container">
+                <img src="https://pipichocho.com/wp-content/uploads/2022/02/IMG_4830-1024x683.jpg" alt="向山行政遊客中心 清水模建築" class="w-full h-44 object-cover" loading="lazy">
+                <div class="text-[11px] text-slate-500 bg-slate-100 px-2.5 py-1 text-center font-medium">日本大師團紀彥清水模 ‧ 無障礙緩坡推車直上平台</div>
+              </div>
+              <div class="img-zoom-container">
+                <img src="https://pipichocho.com/wp-content/uploads/2022/02/IMG_4844-1024x683.jpg" alt="台灣惠蓀咖啡向山館 落地窗與無邊際水池" class="w-full h-44 object-cover" loading="lazy">
+                <div class="text-[11px] text-slate-500 bg-slate-100 px-2.5 py-1 text-center font-medium">惠蓀咖啡無敵水景第一排 ‧ 專心品嚐咖啡與茶葉蛋</div>
+              </div>
+            </div>
+
             <div class="bg-slate-50 rounded-xl p-4 space-y-3 text-sm border border-slate-100">
               <div>
-                <span class="font-semibold text-emerald-700"><i class="fa-solid fa-landmark mr-1"></i> 景點特色：</span>
-                日本知名建築大師團紀彥親手操刀，流線清水模與無邊際水池倒映藍天湖景。
+                <span class="font-semibold text-blue-700"><i class="fa-solid fa-eye mr-1"></i> 惠蓀咖啡正確打開方式：</span>
+                吃飽後進來惠蓀咖啡，<strong>「只點飲料、咖啡與茶葉蛋，專心享受無邊際水景！」</strong>挑選靠落地玻璃窗的景觀第一排座位，點杯冰滴咖啡或冷萃紅玉紅茶、在伴手禮區購買網友公認最好吃的「<strong>所長茶葉蛋</strong>」，吹著冷氣飽覽水池與日月潭拉魯島水色，既避開雷餐又收穫絕美湖景！
               </div>
-              <div>
-                <span class="font-semibold text-lake-700"><i class="fa-solid fa-baby-carriage mr-1"></i> 17M寶寶推車攻略：</span>
-                <strong>極度推車友善！</strong>全區皆為平緩寬闊斜坡，<strong>嬰兒推車可一路無障礙推上頂樓觀景台</strong>，亦可推至「向山眺望平台（懸臂空中步道）」俯瞰湖景。遊客中心服務處可借推車，設有舒適空調哺集乳室（飲水機、洗手槽、尿布台一應俱全）。
-              </div>
-              <div>
-                <span class="font-semibold text-slate-700"><i class="fa-solid fa-bowl-food mr-1"></i> 午餐攻略：</span>
-                館內「<strong>台灣惠蓀咖啡向山館</strong>」享有整面落地玻璃湖景，提供簡餐牛肉麵、千層麵、披薩與台灣惠蓀在地咖啡，推車可直接推至桌旁；若寶寶想吃簡單清淡，可自備副食品或搭配少調味食材。
-              </div>
-              <div class="flex flex-wrap gap-2 pt-1">
-                <a href="https://www.google.com/maps/search/?api=1&query=向山行政暨遊客中心" target="_blank" class="inline-flex items-center text-xs bg-white hover:bg-slate-100 text-slate-700 border border-slate-300 px-2.5 py-1 rounded-lg font-medium transition">
-                  <i class="fa-solid fa-map-location-dot text-emerald-600 mr-1.5"></i> Google 地圖
-                </a>
+              <div class="bg-blue-50 border border-blue-200 rounded-lg p-3 text-blue-900 text-xs">
+                <strong><i class="fa-solid fa-moon text-indigo-500 mr-1"></i> 17M 寶寶午睡關鍵時刻（13:45 - 14:45）：</strong>
+                在向山推著推車散步、涼風吹拂下，寶寶在吃飽後自然產生睡意，在推車或隨後開車前往伊達邵（車程約 20 分鐘）的安全座椅上舒舒服服午睡 1 小時！
               </div>
             </div>
           </div>
@@ -335,18 +391,18 @@
       <div class="bg-white rounded-2xl p-6 sm:p-8 border border-slate-200 shadow-sm space-y-6">
         <div class="flex items-center space-x-3 text-lake-600">
           <div class="w-8 h-8 rounded-lg bg-lake-50 flex items-center justify-center font-bold">
-            <i class="fa-solid fa-cloud-sun text-lg"></i>
+            <i class="fa-solid fa-water-ladder text-lg"></i>
           </div>
-          <h3 class="text-xl font-bold text-slate-900">下午時段 (Afternoon) ‧ 溫泉酒店 Check-in、午睡充電與親子館放電</h3>
+          <h3 class="text-xl font-bold text-slate-900">下午時段 (Afternoon) ‧ 溫德姆 Check-in、爸爸房內辦公 ＆ 母女泳池玩水放電</h3>
         </div>
 
-        <div class="space-y-6 border-l-2 border-lake-200 pl-4 sm:pl-6 ml-3">
+        <div class="space-y-8 border-l-2 border-lake-200 pl-4 sm:pl-6 ml-3">
           
-          <!-- Item 4: Hotel Check-in -->
+          <!-- Item 5: Hotel Check-in -->
           <div class="relative">
             <div class="absolute -left-[25px] sm:-left-[33px] top-1.5 w-4 h-4 rounded-full bg-lake-600 border-4 border-white"></div>
             <div class="flex flex-wrap items-center gap-2 mb-1">
-              <span class="font-bold text-lake-700 text-base">14:30 - 15:30</span>
+              <span class="font-bold text-lake-700 text-base">15:00 - 15:30</span>
               <span class="badge-pill bg-indigo-100 text-indigo-800 font-semibold"><i class="fa-solid fa-hotel mr-1"></i>飯店登記入住</span>
               <h4 class="text-lg font-bold text-slate-900">日月潭力麗溫德姆溫泉酒店 Check-in</h4>
               <span class="text-xs font-semibold bg-amber-100 text-amber-800 px-2 py-0.5 rounded">4.5 ★ (1,200+評價)</span>
@@ -355,47 +411,67 @@
               <i class="fa-solid fa-location-dot mr-1 text-slate-400"></i> 南投縣魚池鄉中正路312號（伊達邵商圈核心）
             </div>
 
-            <div class="bg-slate-50 rounded-xl p-4 space-y-3 text-sm border border-slate-100">
-              <div>
-                <span class="font-semibold text-indigo-700"><i class="fa-solid fa-circle-check mr-1"></i> 飯店特色：</span>
-                力麗集團與世界級溫德姆聯名打造的五星度假酒店，座落伊達邵商圈中心，走路 2 分鐘就到老街與碼頭。所有客房皆設有專屬獨立溫泉冷熱雙池或美人湯碳酸氫鈉泉。
-              </div>
-              <div class="bg-indigo-50 border border-indigo-100 rounded-lg p-3 text-indigo-900 text-xs">
-                <strong><i class="fa-solid fa-shield-cat mr-1"></i> 寶寶專屬備品提醒：</strong>
-                入住前已確認預約嬰兒床、紫外線奶瓶消毒鍋、溫奶器、嬰兒澡盆與小水杓，並提供可愛小鴨兒童沐浴旅行組。
-              </div>
+            <!-- Hotel Photo -->
+            <div class="img-zoom-container mb-3">
+              <img src="https://wyndhamsunmoonlake.com/wp-content/uploads/2023/08/%E9%85%92%E5%BA%97%E6%AD%A3%E9%96%80%E5%85%A5%E5%8F%A3-%E5%A4%9C-scaled.jpg" alt="力麗溫德姆溫泉酒店 正門外觀" class="w-full h-48 sm:h-56 object-cover" loading="lazy">
+              <div class="text-[11px] text-slate-500 bg-slate-100 px-2.5 py-1 text-center font-medium">力麗溫德姆溫泉酒店 ‧ 全新五星溫泉度假地標</div>
             </div>
-          </div>
 
-          <!-- Item 5: Baby Nap -->
-          <div class="relative">
-            <div class="absolute -left-[25px] sm:-left-[33px] top-1.5 w-4 h-4 rounded-full bg-purple-400 border-4 border-white"></div>
-            <div class="flex flex-wrap items-center gap-2 mb-1">
-              <span class="font-bold text-purple-700 text-base">15:00 - 16:15</span>
-              <span class="badge-pill bg-purple-100 text-purple-800 font-semibold"><i class="fa-solid fa-bed mr-1"></i>寶寶午睡充電</span>
-              <h4 class="text-base font-bold text-slate-900">回客房小憩充電（極重要！避免傍晚哭鬧）</h4>
-            </div>
             <p class="text-sm text-slate-600">
-              17 個月大幼童出門坐車半天後，適度午睡 1 小時是維持好心情的黃金關鍵。媽媽爸爸也能在此時喝杯客房膠囊咖啡放鬆，享受山景陽台。
+              抵達飯店辦理入住，寶寶車上午睡剛好充飽電醒來，精神奕奕！房間配妥預約之嬰兒床、紫外線消毒鍋、澡盆與小水杓。
             </p>
           </div>
 
-          <!-- Item 6: Kids Club / Pool -->
+          <!-- Item 6: Split Activities: Dad Working vs Mom & Baby Pool -->
           <div class="relative">
             <div class="absolute -left-[25px] sm:-left-[33px] top-1.5 w-4 h-4 rounded-full bg-pink-500 border-4 border-white"></div>
             <div class="flex flex-wrap items-center gap-2 mb-1">
-              <span class="font-bold text-pink-700 text-base">16:30 - 17:45</span>
-              <span class="badge-pill bg-pink-100 text-pink-800 font-semibold"><i class="fa-solid fa-shapes mr-1"></i>室內放電樂園</span>
-              <h4 class="text-lg font-bold text-slate-900">RURUZAZA 魯魯札札咖啡親子館（或飯店戲水池）</h4>
+              <span class="font-bold text-pink-700 text-base">15:30 - 17:30</span>
+              <span class="badge-pill bg-amber-100 text-amber-800 font-semibold"><i class="fa-solid fa-laptop mr-1"></i>分工合作</span>
+              <h4 class="text-lg font-bold text-slate-900">爸爸房間高效上班 ‧ 媽媽帶女兒衝泳池放電！</h4>
             </div>
-            <div class="bg-slate-50 rounded-xl p-4 space-y-3 text-sm border border-slate-100">
-              <div>
-                <span class="font-semibold text-pink-700"><i class="fa-solid fa-gift mr-1"></i> 房客權益：</span>
-                溫德姆房客可<strong>免費暢玩</strong>步行僅 50 公尺（力麗哲園日潭館旁）的「RURUZAZA 魯魯札札咖啡親子館」。館內擁有球池、溜滑梯、大型安全軟積木、體感投影遊戲，全區防護安全地墊，非常適合 17 個月寶寶探索放電！
+
+            <!-- Two Column Split Cards -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-3">
+              
+              <!-- Dad Work Card -->
+              <div class="bg-amber-50/70 border border-amber-200 rounded-2xl p-4 flex flex-col justify-between">
+                <div>
+                  <div class="flex items-center space-x-2 text-amber-800 font-bold text-base mb-2">
+                    <i class="fa-solid fa-laptop-code text-amber-600"></i>
+                    <span>【爸爸】客房高效率遠端辦公</span>
+                  </div>
+                  <div class="img-zoom-container mb-2">
+                    <img src="https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?auto=format&fit=crop&w=1200&q=80" alt="客房安靜辦公空間" class="w-full h-36 object-cover" loading="lazy">
+                  </div>
+                  <p class="text-xs text-amber-950 leading-relaxed">
+                    力麗溫德姆客房空間達 11~13 坪，配有專屬辦公書桌椅、全區高速 Wi-Fi、膠囊咖啡機與山景陽台。房間安靜不受打擾，爸爸可在此專注開會、寫程式或處理重要公事，下班後無縫切換度假模式！
+                  </p>
+                </div>
+                <div class="mt-2 text-[11px] text-amber-700 font-semibold">
+                  <i class="fa-solid fa-wifi mr-1"></i> 高速網路 ‧ 獨立書桌 ‧ 膠囊咖啡
+                </div>
               </div>
-              <div class="text-xs text-slate-500">
-                <i class="fa-solid fa-umbrella-beach text-lake-600 mr-1"></i> 亦可選擇前往飯店 3 樓戶外常溫水療池與兒童淺水戲水池玩水（請備妥嬰兒專用防水游泳尿布與泳帽）。
+
+              <!-- Mom & Baby Pool Card -->
+              <div class="bg-cyan-50/70 border border-cyan-200 rounded-2xl p-4 flex flex-col justify-between">
+                <div>
+                  <div class="flex items-center space-x-2 text-cyan-800 font-bold text-base mb-2">
+                    <i class="fa-solid fa-person-swimming text-cyan-600"></i>
+                    <span>【媽媽＋女兒】3F戶外水療＆兒童戲水池</span>
+                  </div>
+                  <div class="img-zoom-container mb-2">
+                    <img src="https://images.unsplash.com/photo-1576013551627-0cc20b96c2a7?auto=format&fit=crop&w=1200&q=80" alt="兒童溫水戲水池" class="w-full h-36 object-cover" loading="lazy">
+                  </div>
+                  <p class="text-xs text-cyan-950 leading-relaxed">
+                    寶寶在午餐後已經睡飽，精神超好！媽媽幫女兒穿上可愛泳衣與防水泳尿布，直接前往 3F 戶外常溫水療池與專屬兒童淺水池拍水嬉戲；亦可步行 50 公尺前往免費暢玩的「RURUZAZA 魯魯札札親子館」玩巨型球池與溜滑梯！
+                  </p>
+                </div>
+                <div class="mt-2 text-[11px] text-cyan-700 font-semibold">
+                  <i class="fa-solid fa-water mr-1"></i> 兒童淺水池 ‧ 魯魯札札球池暢玩
+                </div>
               </div>
+
             </div>
           </div>
 
@@ -406,74 +482,60 @@
       <div class="bg-white rounded-2xl p-6 sm:p-8 border border-slate-200 shadow-sm space-y-6">
         <div class="flex items-center space-x-3 text-purple-600">
           <div class="w-8 h-8 rounded-lg bg-purple-50 flex items-center justify-center font-bold">
-            <i class="fa-solid fa-moon text-lg"></i>
+            <i class="fa-solid fa-utensils text-lg"></i>
           </div>
-          <h3 class="text-xl font-bold text-slate-900">晚上時段 (Evening) ‧ 老街美食漫步、水岸夜景與客房私湯</h3>
+          <h3 class="text-xl font-bold text-slate-900">晚上時段 (Evening) ‧ 高評價邵族手創晚餐（開車15分內）＆ 客房私湯</h3>
         </div>
 
-        <div class="space-y-6 border-l-2 border-purple-200 pl-4 sm:pl-6 ml-3">
+        <div class="space-y-8 border-l-2 border-purple-200 pl-4 sm:pl-6 ml-3">
           
-          <!-- Item 7: Ita Thao Food Street -->
+          <!-- Item 7: High-rated Dinner -->
           <div class="relative">
             <div class="absolute -left-[25px] sm:-left-[33px] top-1.5 w-4 h-4 rounded-full bg-rose-500 border-4 border-white"></div>
             <div class="flex flex-wrap items-center gap-2 mb-1">
               <span class="font-bold text-rose-700 text-base">18:00 - 20:00</span>
-              <span class="badge-pill bg-rose-100 text-rose-800 font-semibold"><i class="fa-solid fa-utensils mr-1"></i>老街排隊美食</span>
-              <h4 class="text-lg font-bold text-slate-900">伊達邵老街商圈漫步 ＆ 水岸夜景</h4>
-              <span class="text-xs font-semibold bg-amber-100 text-amber-800 px-2 py-0.5 rounded">4.4 ★ (15,000+評價)</span>
+              <span class="badge-pill bg-rose-100 text-rose-800 font-semibold"><i class="fa-solid fa-award mr-1"></i>在地最高評</span>
+              <h4 class="text-lg font-bold text-slate-900">第一天高評價精緻晚餐 ‧ 麓司岸手創料理餐坊（或開車秘境）</h4>
+              <span class="text-xs font-semibold bg-amber-100 text-amber-800 px-2 py-0.5 rounded">4.6 ★ (2,800+好評)</span>
             </div>
             <div class="text-xs text-slate-500 mb-2">
-              <i class="fa-solid fa-person-walking mr-1 text-slate-400"></i> 飯店下樓步行 2 分鐘即達（推車逛街無壓力，免找車位）
+              <i class="fa-solid fa-car mr-1 text-slate-400"></i> 開車 1~12 分鐘即可抵達頂級推薦餐廳
             </div>
 
-            <!-- Food Grid -->
-            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 mt-3">
-              <div class="bg-white p-3.5 rounded-xl border border-slate-200 shadow-xs">
-                <div class="flex justify-between items-center mb-1">
-                  <span class="font-bold text-slate-900 text-sm">1. 年記做不復賣香菇高麗菜包</span>
-                  <span class="text-xs text-amber-600 font-bold">4.3 ★</span>
-                </div>
-                <p class="text-xs text-slate-600">現炸金黃酥脆外皮，滿滿高麗菜與埔里高山香菇，香氣濃郁排隊名店。</p>
+            <!-- Photo Grid -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-3">
+              <div class="img-zoom-container">
+                <img src="https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=1200&q=80" alt="精緻邵族手創料理合菜" class="w-full h-44 object-cover" loading="lazy">
+                <div class="text-[11px] text-slate-500 bg-slate-100 px-2.5 py-1 text-center font-medium">五星主廚阿聖師 ‧ 陶板山豬肉、清蒸鱸魚與金牌蕉蕉者</div>
               </div>
-
-              <div class="bg-white p-3.5 rounded-xl border border-slate-200 shadow-xs">
-                <div class="flex justify-between items-center mb-1">
-                  <span class="font-bold text-slate-900 text-sm">2. 麓司段三級棒山豬肉香腸</span>
-                  <span class="text-xs text-amber-600 font-bold">4.4 ★</span>
-                </div>
-                <p class="text-xs text-slate-600">原住民馬告風味香腸，手工灌製炭火慢烤，肉汁飽滿不乾柴。</p>
+              <div class="img-zoom-container">
+                <img src="https://images.unsplash.com/photo-1514933651103-005eec06c04b?auto=format&fit=crop&w=1200&q=80" alt="伊達邵碼頭夜晚氛圍" class="w-full h-44 object-cover" loading="lazy">
+                <div class="text-[11px] text-slate-500 bg-slate-100 px-2.5 py-1 text-center font-medium">飯後散步至伊達邵水岸廣場 ‧ 湖風涼爽音樂悠揚</div>
               </div>
+            </div>
 
-              <div class="bg-white p-3.5 rounded-xl border border-slate-200 shadow-xs">
+            <div class="space-y-3 text-sm">
+              <div class="bg-rose-50 border border-rose-100 rounded-xl p-4">
                 <div class="flex justify-between items-center mb-1">
-                  <span class="font-bold text-slate-900 text-sm">3. 杰記山豬肉大刈包</span>
-                  <span class="text-xs text-amber-600 font-bold">4.2 ★</span>
+                  <h5 class="font-bold text-rose-950 text-base">首選推薦 A（伊達邵在地第一名 ‧ 車程 1 分鐘或步行 2 分鐘）</h5>
+                  <span class="text-xs bg-amber-100 text-amber-800 px-2 py-0.5 rounded font-bold">4.6 ★ (2,800+則)</span>
                 </div>
-                <p class="text-xs text-slate-600">特製南瓜外皮夾入烤山豬肉片、現煎荷包蛋與酸菜，份量滿足。</p>
-              </div>
-
-              <div class="bg-white p-3.5 rounded-xl border border-slate-200 shadow-xs">
-                <div class="flex justify-between items-center mb-1">
-                  <span class="font-bold text-slate-900 text-sm">4. TEA18 朝霧紅茶</span>
-                  <span class="text-xs text-amber-600 font-bold">4.5 ★</span>
-                </div>
-                <p class="text-xs text-slate-600">魚池在地有機認證茶園，台茶18號紅玉冷泡茶甘醇回甘，庭院優美。</p>
-              </div>
-
-              <div class="bg-white p-3.5 rounded-xl border border-slate-200 shadow-xs sm:col-span-2">
-                <div class="flex justify-between items-center mb-1">
-                  <span class="font-bold text-slate-900 text-sm">🌟 想要坐下來好好吃晚餐？推薦「富園餐館」或「袁家美食城」</span>
-                  <span class="text-xs text-amber-600 font-bold">4.6 ★</span>
-                </div>
-                <p class="text-xs text-slate-600">
-                  若想讓寶寶有安全餐椅、爸媽放鬆吃正餐，推薦老街高評價邵族風味合菜。提供清蒸水庫魚、白斬放山土雞、炒山蘇、清甜香菇肉絲湯（可請店家少鹽，魚肉、米飯與清湯非常適合分給寶寶食用）。
+                <div class="text-xs text-rose-900 font-semibold mb-2">麓司岸手創料理餐坊 ‧ 南投縣魚池鄉文化街108號（電話：049-2850451）</div>
+                <p class="text-xs text-slate-700 leading-relaxed">
+                  由五星級飯店主廚出身的邵族「阿聖師」親自掌廚，將傳統邵族食材提升為星級精緻料理。提供 2~3 人特色合菜：招牌陶板山豬肉、清蒸活水庫鱸魚、蘭陽西魯肉、金牌炸香蕉甜點「蕉蕉者」，餐點少味精、魚肉新鮮細嫩，非常適合分給 17 個月大幼兒食用。室內冷氣充足、備有兒童高腳椅，是伊達邵口碑公認最頂級的餐廳！
                 </p>
               </div>
-            </div>
 
-            <div class="mt-3 bg-purple-50 rounded-xl p-3.5 text-xs text-purple-900 flex items-center space-x-2">
-              <i class="fa-solid fa-moon text-purple-600 text-base"></i>
-              <span>吃飽後推著推車散步至<strong>伊達邵碼頭水岸木棧廣場</strong>，夜晚涼風徐徐，欣賞湖面倒映的點點燈火與街頭藝人悠揚歌聲。</span>
+              <div class="bg-slate-50 border border-slate-200 rounded-xl p-4">
+                <div class="flex justify-between items-center mb-1">
+                  <h5 class="font-bold text-slate-900 text-base">開車秘境首選 B（山林隱世日式禪風 ‧ 車程 12 分鐘）</h5>
+                  <span class="text-xs bg-amber-100 text-amber-800 px-2 py-0.5 rounded font-bold">4.4 ★ (1,200+則)</span>
+                </div>
+                <div class="text-xs text-slate-600 font-semibold mb-2">一味無二 綠食坊 ‧ 南投縣魚池鄉魚池街852號（電話：049-2898745）</div>
+                <p class="text-xs text-slate-700 leading-relaxed">
+                  座落於隱密翠綠林間的日式現代玻璃屋，擁有大片平整綠草皮與幽靜景致。主打在地健康無毒食材與精緻養生套餐，口味清爽少油少鹽，環境遠離商圈喧囂，推車友善，適合喜歡安靜大自然氛圍的家庭。
+                </p>
+              </div>
             </div>
           </div>
 
@@ -483,10 +545,17 @@
             <div class="flex flex-wrap items-center gap-2 mb-1">
               <span class="font-bold text-teal-700 text-base">20:30 - 22:00</span>
               <span class="badge-pill bg-teal-100 text-teal-800 font-semibold"><i class="fa-solid fa-bath mr-1"></i>親子私湯</span>
-              <h4 class="text-lg font-bold text-slate-900">客房專屬美人湯 ‧ 碳酸氫鈉泉放鬆</h4>
+              <h4 class="text-lg font-bold text-slate-900">客房專屬美人湯 ‧ 碳酸氫鈉泉舒緩身心</h4>
             </div>
+
+            <!-- Hot Spring Photo -->
+            <div class="img-zoom-container mb-3">
+              <img src="https://images.unsplash.com/photo-1584132967334-10e028bd69f7?auto=format&fit=crop&w=1200&q=80" alt="客房獨立溫泉美人湯" class="w-full h-44 object-cover" loading="lazy">
+              <div class="text-[11px] text-slate-500 bg-slate-100 px-2.5 py-1 text-center font-medium">客房專屬獨立深湯池 ‧ 碳酸氫鈉泉美人湯溫潤親膚</div>
+            </div>
+
             <p class="text-sm text-slate-600">
-              回房替寶寶洗香香，溫德姆的碳酸氫鈉泉水質清澈、無刺鼻硫磺味，溫和親膚。可先放水調和至 37~38°C 讓寶寶泡腳戲水，待寶寶入睡後，夫妻兩人便能輪流沉浸在私密深湯池中徹底洗去開車與育兒的疲累。
+              溫德姆碳酸氫鈉泉水質清澈純淨、無刺鼻硫磺味。爸爸上班完、母女玩水放電後，全家人洗香香，調和至 37~38°C 讓寶寶泡腳戲水安撫入眠，夫妻倆輪流在深池中浸泡，洗去一日疲勞。
             </p>
           </div>
 
@@ -515,25 +584,27 @@
           <h3 class="text-xl font-bold text-slate-900">早上時段 (Morning) ‧ 饗沐早午餐 Buffet ＆ 日月潭湖景纜車</h3>
         </div>
 
-        <div class="space-y-6 border-l-2 border-amber-200 pl-4 sm:pl-6 ml-3">
+        <div class="space-y-8 border-l-2 border-amber-200 pl-4 sm:pl-6 ml-3">
           
           <!-- Item 9: Breakfast -->
           <div class="relative">
             <div class="absolute -left-[25px] sm:-left-[33px] top-1.5 w-4 h-4 rounded-full bg-amber-500 border-4 border-white"></div>
             <div class="flex flex-wrap items-center gap-2 mb-1">
               <span class="font-bold text-amber-700 text-base">08:00 - 09:45</span>
-              <span class="badge-pill bg-amber-100 text-amber-800 font-semibold"><i class="fa-solid fa-utensils mr-1"></i>飯店 Buffet</span>
+              <span class="badge-pill bg-amber-100 text-amber-800 font-semibold"><i class="fa-solid fa-utensils mr-1"></i>飯店早午餐</span>
               <h4 class="text-lg font-bold text-slate-900">溫德姆 1F 饗沐全日自助餐廳（供餐至 12:00！）</h4>
             </div>
-            <div class="bg-slate-50 rounded-xl p-4 space-y-3 text-sm border border-slate-100">
-              <div>
-                <span class="font-semibold text-amber-700"><i class="fa-solid fa-clock mr-1"></i> 早午餐超狂福利：</span>
-                饗沐餐廳早餐從早上 07:00 一路供應至<strong>中午 12:00（早午餐規格 Brunch）</strong>！帶 17 個月大幼兒最怕一早手忙腳亂趕吃早餐，在這裡能完全按寶寶起床作息從容悠閒享用。
-              </div>
-              <div>
-                <span class="font-semibold text-slate-700"><i class="fa-solid fa-bowl-rice mr-1"></i> 寶寶喜愛食物：</span>
-                備有兒童專用餐具、安全餐椅、現熬細緻白粥、清蒸有機南瓜地瓜、現煎原味蛋捲、鮮奶優格、燕麥與多種新鮮切片水果。
-              </div>
+
+            <!-- Buffet Photo -->
+            <div class="img-zoom-container mb-3">
+              <img src="https://images.unsplash.com/photo-1555244162-803834f70033?auto=format&fit=crop&w=1200&q=80" alt="溫德姆饗沐自助餐廳 豐盛早午餐" class="w-full h-44 object-cover" loading="lazy">
+              <div class="text-[11px] text-slate-500 bg-slate-100 px-2.5 py-1 text-center font-medium">饗沐全日自助早午餐 ‧ 寶寶專用餐具高腳椅、現熬細粥蒸地瓜</div>
+            </div>
+
+            <div class="bg-slate-50 rounded-xl p-4 space-y-2 text-sm border border-slate-100">
+              <p class="text-xs text-slate-700 leading-relaxed">
+                饗沐早餐供應時間長達 07:00 ~ 12:00（早午餐規格 Brunch），帶小小孩完全不用趕早！提供寶寶最愛的細緻白粥、有機蒸地瓜南瓜、現煎蛋捲、鮮乳水果。
+              </p>
             </div>
           </div>
 
@@ -542,23 +613,22 @@
             <div class="absolute -left-[25px] sm:-left-[33px] top-1.5 w-4 h-4 rounded-full bg-blue-500 border-4 border-white"></div>
             <div class="flex flex-wrap items-center gap-2 mb-1">
               <span class="font-bold text-blue-700 text-base">10:00 - 11:30</span>
-              <span class="badge-pill bg-blue-100 text-blue-800 font-semibold"><i class="fa-solid fa-cable-car mr-1"></i>米其林三星全景</span>
+              <span class="badge-pill bg-blue-100 text-blue-800 font-semibold"><i class="fa-solid fa-cable-car mr-1"></i>米其林三星美景</span>
               <h4 class="text-lg font-bold text-slate-900">日月潭纜車體驗（伊達邵站）</h4>
               <span class="text-xs font-semibold bg-amber-100 text-amber-800 px-2 py-0.5 rounded">4.4 ★ (22,000+評價)</span>
             </div>
             <div class="text-xs text-slate-500 mb-2">
-              <i class="fa-solid fa-location-dot mr-1 text-slate-400"></i> 南投縣魚池鄉中正路102號（距飯店車程 3 分鐘，亦可走親水木棧道推車散步 15 分）
+              <i class="fa-solid fa-location-dot mr-1 text-slate-400"></i> 南投縣魚池鄉中正路102號
             </div>
 
-            <div class="bg-slate-50 rounded-xl p-4 space-y-3 text-sm border border-slate-100">
-              <div>
-                <span class="font-semibold text-blue-700"><i class="fa-solid fa-mountain-sun mr-1"></i> 景點魅力：</span>
-                全長 1877 公尺，跨越卜吉山（海拔 1044 公尺），從高空俯瞰 360 度米其林三星級日月潭湖光山色，視野令人屏息！
-              </div>
-              <div>
-                <span class="font-semibold text-slate-700"><i class="fa-solid fa-ticket mr-1"></i> 票價與推車攻略：</span>
-                未滿 3 歲或身高未滿 100 公分幼童<strong>免門票搭乘</strong>！纜車站全區無障礙電梯，<strong>推車可直接推至乘車月台</strong>（一般摺疊型推車可收摺帶入車廂）。車廂通風良好、速度平穩，寶寶看著山巒與湖面會驚奇不已。
-              </div>
+            <!-- Ropeway Photo -->
+            <div class="img-zoom-container mb-3">
+              <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1200&q=80" alt="日月潭纜車 高空湖景俯瞰" class="w-full h-44 object-cover" loading="lazy">
+              <div class="text-[11px] text-slate-500 bg-slate-100 px-2.5 py-1 text-center font-medium">高空俯瞰 360 度日月潭山光水色 ‧ 未滿3歲幼童免門票</div>
+            </div>
+
+            <div class="bg-slate-50 rounded-xl p-4 text-xs text-slate-700 space-y-1 border border-slate-100">
+              <p>全站設有無障礙電梯，輕便推車可折收帶入車廂。車廂通風順暢，俯瞰米其林三星湖景極為震撼。</p>
             </div>
           </div>
 
@@ -571,22 +641,12 @@
           <div class="w-8 h-8 rounded-lg bg-rose-50 flex items-center justify-center font-bold">
             <i class="fa-solid fa-sun text-lg"></i>
           </div>
-          <h3 class="text-xl font-bold text-slate-900">下午時段 (Afternoon) ‧ 水上餐廳午餐、妮娜巧克力城堡變裝體驗</h3>
+          <h3 class="text-xl font-bold text-slate-900">下午時段 (Afternoon) ‧ 水上旋轉餐廳午餐 ＆ 妮娜巧克力城堡變裝</h3>
         </div>
 
-        <div class="space-y-6 border-l-2 border-rose-200 pl-4 sm:pl-6 ml-3">
+        <div class="space-y-8 border-l-2 border-rose-200 pl-4 sm:pl-6 ml-3">
           
-          <!-- Item 11: Checkout & Drive -->
-          <div class="relative">
-            <div class="absolute -left-[25px] sm:-left-[33px] top-1.5 w-4 h-4 rounded-full bg-slate-400 border-4 border-white"></div>
-            <div class="flex flex-wrap items-center gap-2 mb-1">
-              <span class="font-bold text-slate-700 text-base">11:45</span>
-              <span class="badge-pill bg-slate-100 text-slate-700">退房啟程</span>
-              <h4 class="text-base font-bold text-slate-900">力麗溫德姆退房 Check-out，開車順遊台 21 線往埔里桃米</h4>
-            </div>
-          </div>
-
-          <!-- Item 12: Lunch -->
+          <!-- Item 11: Lunch Tugao -->
           <div class="relative">
             <div class="absolute -left-[25px] sm:-left-[33px] top-1.5 w-4 h-4 rounded-full bg-emerald-500 border-4 border-white"></div>
             <div class="flex flex-wrap items-center gap-2 mb-1">
@@ -599,19 +659,18 @@
               <i class="fa-solid fa-location-dot mr-1 text-slate-400"></i> 南投縣埔里鎮水上巷2號
             </div>
 
-            <div class="bg-slate-50 rounded-xl p-4 space-y-3 text-sm border border-slate-100">
-              <div>
-                <span class="font-semibold text-emerald-700"><i class="fa-solid fa-water mr-1"></i> 餐廳亮點：</span>
-                全台唯一的「水上玻璃旋轉餐廳」，包廂建在魚池水中央，用餐時緩緩旋轉。池畔成群錦鯉游動，餐廳提供魚飼料，17個月寶寶可以超近距離餵魚看魚，推車可順暢推入。
-              </div>
-              <div>
-                <span class="font-semibold text-slate-700"><i class="fa-solid fa-utensils mr-1"></i> 美味佳餚：</span>
-                主打少油少鹽健康台菜與客家風味，招牌白斬醃雞、清蒸活鱸魚、鮮香菇燉土雞湯，料理清爽非常適合家庭老小共享。
-              </div>
+            <!-- Tugao Photo -->
+            <div class="img-zoom-container mb-3">
+              <img src="https://images.unsplash.com/photo-1520697830682-bbb6e85e2b0b?auto=format&fit=crop&w=1200&q=80" alt="水上庭園鯉魚池" class="w-full h-44 object-cover" loading="lazy">
+              <div class="text-[11px] text-slate-500 bg-slate-100 px-2.5 py-1 text-center font-medium">全台唯一水上旋轉包廂 ‧ 近距離餵錦鯉看魚、清爽少鹽台菜</div>
             </div>
+
+            <p class="text-xs text-slate-700">
+              包廂建於水池中央慢速旋轉，池畔成群錦鯉可讓 17 個月大寶寶超近距離餵魚，餐點為少油少鹽健康台菜，推車可順暢推入。
+            </p>
           </div>
 
-          <!-- Item 13: Cona's Castle -->
+          <!-- Item 12: Conas Castle -->
           <div class="relative">
             <div class="absolute -left-[25px] sm:-left-[33px] top-1.5 w-4 h-4 rounded-full bg-pink-500 border-4 border-white"></div>
             <div class="flex flex-wrap items-center gap-2 mb-1">
@@ -621,29 +680,24 @@
               <span class="text-xs font-semibold bg-amber-100 text-amber-800 px-2 py-0.5 rounded">4.6 ★ (25,000+好評)</span>
             </div>
             <div class="text-xs text-slate-500 mb-2">
-              <i class="fa-solid fa-location-dot mr-1 text-slate-400"></i> 南投縣埔里鎮桃米路32號（距土角厝餐廳僅 5 分鐘車程）
+              <i class="fa-solid fa-location-dot mr-1 text-slate-400"></i> 南投縣埔里鎮桃米路32號
             </div>
 
-            <div class="bg-slate-50 rounded-xl p-4 space-y-3 text-sm border border-slate-100">
-              <div>
-                <span class="font-semibold text-pink-700"><i class="fa-solid fa-sparkles mr-1"></i> 親子極致推車友善亮點：</span>
-                外觀如霍格華茲巴洛克古堡，全棟 1~3 樓皆有<strong>大型無障礙透明電梯</strong>，冷氣極涼爽，午後避暑首選！
+            <!-- Conas Photos -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-3">
+              <div class="img-zoom-container">
+                <img src="https://images.unsplash.com/photo-1533105079780-92b9be482077?auto=format&fit=crop&w=1200&q=80" alt="歐式童話夢幻城堡" class="w-full h-44 object-cover" loading="lazy">
+                <div class="text-[11px] text-slate-500 bg-slate-100 px-2.5 py-1 text-center font-medium">霍格華茲巴洛克古堡 ‧ 全室內冷氣電梯直達</div>
               </div>
-              <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs">
-                <div class="bg-white p-2.5 rounded-lg border border-slate-200">
-                  <strong class="text-slate-900 block mb-1"><i class="fa-solid fa-shirt text-pink-500 mr-1"></i> 免費歐洲宮廷禮服變裝：</strong>
-                  現場免費租借華麗歐洲宮廷披風、公主裝（備有小童與大人尺寸），全家人變身童話貴族在城堡大廳合照超萌！
-                </div>
-                <div class="bg-white p-2.5 rounded-lg border border-slate-200">
-                  <strong class="text-slate-900 block mb-1"><i class="fa-solid fa-gamepad text-indigo-500 mr-1"></i> 互動巧克力遊戲機：</strong>
-                  門票感應機器即可看到齒輪運轉並掉出新鮮得獎巧克力薄片，聲光效果十足，小幼兒看得目不轉睛。
-                </div>
-              </div>
-              <div>
-                <span class="font-semibold text-slate-700"><i class="fa-solid fa-bag-shopping mr-1"></i> 伴手禮必買：</span>
-                世界 ICA 巧克力大賽金牌「炭培烏龍生巧克力」、檸檬薄片夾心黑巧克力、乾果巧克力。
+              <div class="img-zoom-container">
+                <img src="https://images.unsplash.com/photo-1511381939415-e44015466834?auto=format&fit=crop&w=1200&q=80" alt="世界得獎巧克力" class="w-full h-44 object-cover" loading="lazy">
+                <div class="text-[11px] text-slate-500 bg-slate-100 px-2.5 py-1 text-center font-medium">免費宮廷服變裝拍照 ‧ 互動掉巧克力機 ‧ 世界金牌生巧克力</div>
               </div>
             </div>
+
+            <p class="text-xs text-slate-700">
+              全室內冷氣充足、電梯直達，午後避暑首選！全家免費穿上華麗歐洲宮廷披風禮服合照超萌，門票可感應機器領取薄片巧克力。
+            </p>
           </div>
 
         </div>
@@ -655,23 +709,12 @@
           <div class="w-8 h-8 rounded-lg bg-slate-100 flex items-center justify-center font-bold">
             <i class="fa-solid fa-car-side text-lg"></i>
           </div>
-          <h3 class="text-xl font-bold text-slate-900">晚上時段 (Evening) ‧ 古坑服務區放電充電 ＆ 平安返抵高雄</h3>
+          <h3 class="text-xl font-bold text-slate-900">晚上時段 (Evening) ‧ 古坑服務區中繼 ＆ 平安返抵高雄</h3>
         </div>
 
-        <div class="space-y-6 border-l-2 border-slate-200 pl-4 sm:pl-6 ml-3">
+        <div class="space-y-8 border-l-2 border-slate-200 pl-4 sm:pl-6 ml-3">
           
-          <!-- Item 14: Drive South -->
-          <div class="relative">
-            <div class="absolute -left-[25px] sm:-left-[33px] top-1.5 w-4 h-4 rounded-full bg-slate-500 border-4 border-white"></div>
-            <div class="flex flex-wrap items-center gap-2 mb-1">
-              <span class="font-bold text-slate-700 text-base">15:30</span>
-              <span class="badge-pill bg-slate-100 text-slate-700">返程自駕</span>
-              <h4 class="text-base font-bold text-slate-900">由國道 6 號愛蘭交流道接國道 3 號南下</h4>
-            </div>
-            <p class="text-sm text-slate-600">在妮娜城堡放完電後，上車立刻能安撫寶寶在汽車安全座椅上午睡休息。</p>
-          </div>
-
-          <!-- Item 15: Rest Stop Return -->
+          <!-- Item 13: Gukeng -->
           <div class="relative">
             <div class="absolute -left-[25px] sm:-left-[33px] top-1.5 w-4 h-4 rounded-full bg-amber-500 border-4 border-white"></div>
             <div class="flex flex-wrap items-center gap-2 mb-1">
@@ -680,32 +723,28 @@
               <h4 class="text-lg font-bold text-slate-900">古坑服務區 (國道3號 276K)</h4>
               <span class="text-xs font-semibold bg-amber-100 text-amber-800 px-2 py-0.5 rounded">4.1 ★ (13,000+評價)</span>
             </div>
-            <div class="text-xs text-slate-500 mb-2">
-              <i class="fa-solid fa-location-dot mr-1 text-slate-400"></i> 雲林縣古坑鄉崁腳村新興100號
+
+            <!-- Gukeng Photo -->
+            <div class="img-zoom-container mb-3">
+              <img src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?auto=format&fit=crop&w=1200&q=80" alt="古坑咖啡園區與水舞" class="w-full h-44 object-cover" loading="lazy">
+              <div class="text-[11px] text-slate-500 bg-slate-100 px-2.5 py-1 text-center font-medium">水舞花園造景 ‧ 古坑手沖咖啡提神 ‧ 五星級哺乳室換尿布</div>
             </div>
 
-            <div class="bg-slate-50 rounded-xl p-4 space-y-3 text-sm border border-slate-100">
-              <div>
-                <span class="font-semibold text-amber-700"><i class="fa-solid fa-seedling mr-1"></i> 設施亮點：</span>
-                以雲林古坑在地咖啡為意象的漂亮休息站，戶外擁有花園與定時音樂水舞噴泉。服務區設有獨立五星級育嬰哺乳室（尿布台、飲水機、溫奶設施一應俱全）。
-              </div>
-              <div>
-                <span class="font-semibold text-slate-700"><i class="fa-solid fa-cookie-bite mr-1"></i> 提神小吃與伴手禮：</span>
-                買杯熱騰騰古坑手沖咖啡提振開車精神，品嚐雲林在地古早味花生糖、咖啡手工蛋捲，給寶寶換好乾爽尿布與喝水。
-              </div>
-            </div>
+            <p class="text-xs text-slate-700">
+              寶寶在車上先小睡片刻，抵達古坑後下車伸展、五星級哺乳室換乾爽尿布，買杯古坑手沖咖啡提振開車精神。
+            </p>
           </div>
 
-          <!-- Item 16: Arrive Kaohsiung -->
+          <!-- Item 14: Arrive Kaohsiung -->
           <div class="relative">
             <div class="absolute -left-[25px] sm:-left-[33px] top-1.5 w-4 h-4 rounded-full bg-green-500 border-4 border-white"></div>
             <div class="flex flex-wrap items-center gap-2 mb-1">
               <span class="font-bold text-green-700 text-base">18:45 - 19:15</span>
-              <span class="badge-pill bg-green-100 text-green-800 font-semibold"><i class="fa-solid fa-house-chimney mr-1"></i>平安抵達</span>
+              <span class="badge-pill bg-green-100 text-green-800 font-semibold"><i class="fa-solid fa-house-chimney mr-1"></i>平安賦歸</span>
               <h4 class="text-lg font-bold text-slate-900">返抵高雄溫暖的家</h4>
             </div>
             <p class="text-sm text-slate-600">
-              晚餐可在路上外帶熱食或回家悠閒享用，整理行李與滿滿相簿回憶，寶寶與爸媽一夜好眠！
+              結束工作與家庭雙贏、身心充飽電的兩天一夜日月潭親子慢活之旅！
             </p>
           </div>
 
@@ -728,19 +767,19 @@
           <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm">
             <div class="bg-white/10 backdrop-blur-md rounded-2xl p-5 border border-white/10 space-y-2">
               <h4 class="font-bold text-amber-300 flex items-center">
-                <i class="fa-solid fa-shapes mr-2"></i> RURUZAZA 魯魯札札咖啡親子館
+                <i class="fa-solid fa-laptop-code mr-2"></i> 爸爸客房辦公專用環境
               </h4>
               <p class="text-xs text-slate-200 leading-relaxed">
-                飯店房客享<strong>免費無限暢玩</strong>特權！館內設有夢幻大球池、旋轉溜滑梯、大型安全軟積木、互動光影投影牆，非常適合 17 個月大幼兒安全爬行跑跳，大人可在一旁品嚐咖啡放鬆。
+                客房配置全區高速 Wi-Fi、寬敞書桌椅、膠囊咖啡機、舒適空調與外推景觀陽台，下午母女玩水時，爸爸可在房間高效率專注上班。
               </p>
             </div>
 
             <div class="bg-white/10 backdrop-blur-md rounded-2xl p-5 border border-white/10 space-y-2">
               <h4 class="font-bold text-cyan-300 flex items-center">
-                <i class="fa-solid fa-utensils mr-2"></i> 饗沐全日餐廳 早午餐 Buffet
+                <i class="fa-solid fa-water-ladder mr-2"></i> 戶外常溫水療 ＆ 兒童戲水池
               </h4>
               <p class="text-xs text-slate-200 leading-relaxed">
-                全台罕見<strong>供應至中午 12:00</strong> 的頂級早餐！睡飽再去吃都來得及。提供寶寶細粥、蒸地瓜、現煎蛋料理、鮮乳水果，配備兒童高腳椅與可愛餐具。
+                飯店 3F 設有戶外常溫泳池與專屬兒童戲水區，水深安全；亦可步行 50 公尺前往免費暢玩的「RURUZAZA 魯魯札札親子館」巨型球池！
               </p>
             </div>
 
@@ -749,16 +788,16 @@
                 <i class="fa-solid fa-hot-tub-person mr-2"></i> 客房專屬溫泉雙池
               </h4>
               <p class="text-xs text-slate-200 leading-relaxed">
-                每間房均配備冷熱雙泉或私人景觀泡湯池，泉質為頂級碳酸氫鈉泉（俗稱美人湯），清澈無硫磺味，溫和親膚，適合全家共浴。
+                每間房均配備冷熱雙池或私人景觀泡湯池，泉質為頂級碳酸氫鈉泉美人湯，清澈無硫磺刺鼻味，溫和親膚適合全家共浴。
               </p>
             </div>
 
             <div class="bg-white/10 backdrop-blur-md rounded-2xl p-5 border border-white/10 space-y-2">
               <h4 class="font-bold text-emerald-300 flex items-center">
-                <i class="fa-solid fa-baby mr-2"></i> 預約制嬰兒備品齊全
+                <i class="fa-solid fa-utensils mr-2"></i> 饗沐 Buffet 供餐至中午 12:00
               </h4>
               <p class="text-xs text-slate-200 leading-relaxed">
-                提供嬰兒木床、紫外線奶瓶消毒鍋、溫奶器、嬰兒專用洗澡盆+小板凳、兒童專用沐浴旅行組（請於入住前或 Check-in 時確認房號配妥）。
+                超狂早餐供應至中午 12:00（早午餐規格），免趕早狼狽吃早餐。提供寶寶細粥、蒸地瓜、現煎蛋料理與兒童高腳椅。
               </p>
             </div>
           </div>
@@ -829,7 +868,7 @@
               </label>
               <label class="flex items-center space-x-3 text-sm text-slate-700 cursor-pointer p-2 rounded-lg hover:bg-slate-50">
                 <input type="checkbox" onchange="toggleCheck(this)" id="check_jacket" class="w-4 h-4 text-rose-600 rounded">
-                <span>薄長袖防風外套（早晚湖畔或纜車微涼防風）</span>
+                <span>薄長袖防風外套（早晚湖畔微涼防風）</span>
               </label>
               <label class="flex items-center space-x-3 text-sm text-slate-700 cursor-pointer p-2 rounded-lg hover:bg-slate-50">
                 <input type="checkbox" onchange="toggleCheck(this)" id="check_repellent" class="w-4 h-4 text-rose-600 rounded">
@@ -841,24 +880,24 @@
           <!-- Category 3 -->
           <div class="space-y-3">
             <h3 class="font-bold text-slate-900 text-base flex items-center text-teal-700">
-              <i class="fa-solid fa-car mr-2"></i> 行程移動與安撫
+              <i class="fa-solid fa-car mr-2"></i> 行程移動與泳池裝備
             </h3>
             <div class="space-y-2">
               <label class="flex items-center space-x-3 text-sm text-slate-700 cursor-pointer p-2 rounded-lg hover:bg-slate-50">
-                <input type="checkbox" onchange="toggleCheck(this)" id="check_stroller" class="w-4 h-4 text-teal-600 rounded">
-                <span>輕便型可折疊嬰兒推車 + 推車遮陽簾/雨罩</span>
+                <input type="checkbox" onchange="toggleCheck(this)" id="check_swim_diaper" class="w-4 h-4 text-teal-600 rounded">
+                <span><strong>嬰兒防水游泳尿布 2~3 片（泳池戲水必備）</strong></span>
               </label>
               <label class="flex items-center space-x-3 text-sm text-slate-700 cursor-pointer p-2 rounded-lg hover:bg-slate-50">
-                <input type="checkbox" onchange="toggleCheck(this)" id="check_carrier" class="w-4 h-4 text-teal-600 rounded">
-                <span>隨身嬰兒背帶（偶爾上下車或走短步道備用）</span>
+                <input type="checkbox" onchange="toggleCheck(this)" id="check_swimwear" class="w-4 h-4 text-teal-600 rounded">
+                <span>幼兒防曬長袖泳裝、小泳帽</span>
+              </label>
+              <label class="flex items-center space-x-3 text-sm text-slate-700 cursor-pointer p-2 rounded-lg hover:bg-slate-50">
+                <input type="checkbox" onchange="toggleCheck(this)" id="check_stroller" class="w-4 h-4 text-teal-600 rounded">
+                <span>輕便型可折疊嬰兒推車 + 推車遮陽簾</span>
               </label>
               <label class="flex items-center space-x-3 text-sm text-slate-700 cursor-pointer p-2 rounded-lg hover:bg-slate-50">
                 <input type="checkbox" onchange="toggleCheck(this)" id="check_toy" class="w-4 h-4 text-teal-600 rounded">
                 <span>寶寶安撫玩偶 / 喜愛的小毛毯（助眠利器）</span>
-              </label>
-              <label class="flex items-center space-x-3 text-sm text-slate-700 cursor-pointer p-2 rounded-lg hover:bg-slate-50">
-                <input type="checkbox" onchange="toggleCheck(this)" id="check_swim" class="w-4 h-4 text-teal-600 rounded">
-                <span>嬰兒防水泳尿布 2 片、幼童泳裝、泳帽（泳池戲水備用）</span>
               </label>
             </div>
           </div>
@@ -866,9 +905,13 @@
           <!-- Category 4 -->
           <div class="space-y-3">
             <h3 class="font-bold text-slate-900 text-base flex items-center text-indigo-700">
-              <i class="fa-solid fa-kit-medical mr-2"></i> 醫療常備與健保卡
+              <i class="fa-solid fa-kit-medical mr-2"></i> 醫療常備與爸爸工作裝備
             </h3>
             <div class="space-y-2">
+              <label class="flex items-center space-x-3 text-sm text-slate-700 cursor-pointer p-2 rounded-lg hover:bg-slate-50">
+                <input type="checkbox" onchange="toggleCheck(this)" id="check_laptop" class="w-4 h-4 text-indigo-600 rounded">
+                <span><strong>爸爸筆電、充電器、耳機（星巴克與房內辦公）</strong></span>
+              </label>
               <label class="flex items-center space-x-3 text-sm text-slate-700 cursor-pointer p-2 rounded-lg hover:bg-slate-50">
                 <input type="checkbox" onchange="toggleCheck(this)" id="check_card" class="w-4 h-4 text-indigo-600 rounded">
                 <span>寶寶健保卡、兒童健康手冊</span>
@@ -910,14 +953,14 @@
           <div>
             <div class="flex items-center justify-between mb-2">
               <span class="badge-pill bg-lake-100 text-lake-800 font-bold text-xs">第一天完整自駕路線</span>
-              <span class="text-xs text-slate-500 font-medium">總程約 220 km (約 2.5~3 小時車程)</span>
+              <span class="text-xs text-slate-500 font-medium">總程約 220 km</span>
             </div>
-            <h3 class="font-bold text-slate-900 text-base mb-1">高雄 ➔ 東山服務區 ➔ 向山遊客中心 ➔ 力麗溫德姆</h3>
+            <h3 class="font-bold text-slate-900 text-base mb-1">高雄 ➔ 東山星巴克 ➔ 蠻荒咖啡 ➔ 向山惠蓀 ➔ 力麗溫德姆</h3>
             <p class="text-xs text-slate-600 mb-4">
-              國道3號北上途經東山休息站放電看魚，中午抵達日月潭向山漫步清水模，下午直達飯店 Check-in。
+              國道3號北上停靠東山星巴克工作放電，中午至蠻荒咖啡享受現做義麵，向山與惠蓀賞景喝咖啡，下午直達飯店 Check-in 玩水。
             </p>
           </div>
-          <a href="https://www.google.com/maps/dir/?api=1&origin=Kaohsiung&destination=力麗溫德姆溫泉酒店&waypoints=東山服務區|向山行政暨遊客中心" target="_blank" class="w-full bg-lake-600 hover:bg-lake-700 text-white font-semibold text-sm py-2.5 px-4 rounded-xl text-center flex items-center justify-center space-x-2 transition shadow-sm">
+          <a href="https://www.google.com/maps/dir/?api=1&origin=Kaohsiung&destination=力麗溫德姆溫泉酒店&waypoints=東山服務區|蠻荒咖啡|向山行政暨遊客中心" target="_blank" class="w-full bg-lake-600 hover:bg-lake-700 text-white font-semibold text-sm py-2.5 px-4 rounded-xl text-center flex items-center justify-center space-x-2 transition shadow-sm">
             <i class="fa-solid fa-diamond-turn-right"></i>
             <span>開啟 Day 1 Google Maps 完整導航</span>
           </a>
@@ -928,9 +971,9 @@
           <div>
             <div class="flex items-center justify-between mb-2">
               <span class="badge-pill bg-amber-100 text-amber-800 font-bold text-xs">第二天完整自駕路線</span>
-              <span class="text-xs text-slate-500 font-medium">總程約 230 km (含回程古坑休息)</span>
+              <span class="text-xs text-slate-500 font-medium">總程約 230 km</span>
             </div>
-            <h3 class="font-bold text-slate-900 text-base mb-1">力麗溫德姆 ➔ 土角厝旋轉餐廳 ➔ 妮娜巧克力城堡 ➔ 古坑 ➔ 高雄</h3>
+            <h3 class="font-bold text-slate-900 text-base mb-1">力麗溫德姆 ➔ 日月潭纜車 ➔ 土角厝旋轉餐廳 ➔ 妮娜城堡 ➔ 古坑 ➔ 高雄</h3>
             <p class="text-xs text-slate-600 mb-4">
               搭乘全景纜車後順遊埔里桃米水上旋轉餐廳與夢幻巧克力古堡，南下古坑休息站喝咖啡，平安回高雄。
             </p>
@@ -948,7 +991,7 @@
   <!-- Footer -->
   <footer class="bg-slate-900 text-slate-400 py-12 border-t border-slate-800 text-center text-xs space-y-3">
     <div class="max-w-4xl mx-auto px-4">
-      <div class="text-white font-bold text-base mb-1">祝大衛全家日月潭之旅順心愉快 ‧ 留下美好回憶！</div>
+      <div class="text-white font-bold text-base mb-1">祝大衛全家日月潭之旅順心愉快 ‧ 工作度假完美兼顧！</div>
       <p class="text-slate-400">專為夫妻 2 人與 17 個月大女兒量身打造 ‧ 隨手自手機存取網頁或一鍵導航</p>
       <div class="pt-4 flex justify-center space-x-4 text-sm text-slate-400">
         <a href="#overview" class="hover:text-white transition">回頂端</a>
@@ -1052,7 +1095,6 @@
 
     // Initialize Map with Leaflet
     function initMap() {
-      // Center roughly midway between Kaohsiung and Sun Moon Lake
       const map = L.map('map').setView([23.45, 120.65], 8);
 
       L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
@@ -1069,31 +1111,38 @@
           type: "start"
         },
         {
-          name: "🐟 東山服務區 (去程中繼站)",
+          name: "☕ 東山服務區 (星巴克工作 ＆ 水族隧道)",
           lat: 23.2758,
           lng: 120.3995,
-          desc: "國3 319K，全台最長水族隧道、換尿布看大魚放電",
+          desc: "國3 319K，爸爸星巴克辦公1小時，母女看海底隧道放電",
           type: "rest"
         },
         {
-          name: "🏛️ 向山行政暨遊客中心",
+          name: "🍝 蠻荒咖啡 Desolate Coffee (Day 1 美味午餐)",
+          lat: 23.8828,
+          lng: 120.9135,
+          desc: "台21線絕美白色景觀餐廳，現做義麵燉飯，推車高腳椅友善",
+          type: "food"
+        },
+        {
+          name: "🏛️ 向山行政暨遊客中心 ＆ 惠蓀咖啡",
           lat: 23.8519,
           lng: 120.9022,
-          desc: "團紀彥清水模、懸臂空中步道、推車全暢行、惠蓀咖啡",
+          desc: "團紀彥清水模、懸臂空中步道；惠蓀咖啡落地窗湖景第一排喝咖啡吃茶葉蛋",
           type: "spot"
         },
         {
-          name: "🏨 力麗溫德姆溫泉酒店 (住宿)",
+          name: "🏨 力麗溫德姆溫泉酒店 (住宿 ＆ 泳池)",
           lat: 23.8596,
           lng: 120.9312,
-          desc: "伊達邵商圈核心、客房溫泉雙池美人湯、魯魯札札親子館",
+          desc: "伊達邵商圈核心、爸爸客房上班、母女戶外水療＆兒童戲水池",
           type: "hotel"
         },
         {
-          name: "🍢 伊達邵老街商圈 & 碼頭",
+          name: "🍲 麓司岸手創料理餐坊 (Day 1 高評價晚餐)",
           lat: 23.8615,
           lng: 120.9304,
-          desc: "飯店旁步行2分鐘，香菇高麗菜包、山豬肉刈包、朝霧紅茶",
+          desc: "Google 4.6★，五星主廚阿聖師邵族創意菜、陶板山豬肉、清蒸魚",
           type: "food"
         },
         {
@@ -1144,8 +1193,6 @@
       });
 
       markerGroup.addTo(map);
-
-      // Fit bounds to show all markers
       map.fitBounds(markerGroup.getBounds().pad(0.1));
     }
 
