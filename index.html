@@ -40,6 +40,8 @@
   <!-- Font Awesome Icons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
+  <!-- exifr - EXIF & GPS Parser -->
+  <script src="https://cdn.jsdelivr.net/npm/exifr/dist/full.umd.js"></script>
   <!-- Leaflet Map CSS & JS -->
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
   <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
@@ -102,6 +104,7 @@
           <a href="#day2" class="px-3 py-2 rounded-lg hover:text-lake-600 hover:bg-lake-50 transition">Day 2 行程</a>
           <a href="#hotel" class="px-3 py-2 rounded-lg hover:text-lake-600 hover:bg-lake-50 transition">溫德姆溫泉</a>
           <a href="#baby-tips" class="px-3 py-2 rounded-lg hover:text-lake-600 hover:bg-lake-50 transition">17M寶寶清單</a>
+          <a href="#photo-story-section" class="px-3 py-2 rounded-lg hover:text-purple-600 hover:bg-purple-50 text-purple-700 transition font-semibold"><i class="fa-solid fa-camera-retro mr-1"></i>照片故事</a>
           <a href="#map-section" class="px-3 py-2 rounded-lg hover:text-lake-600 hover:bg-lake-50 transition">地圖導航</a>
           <button onclick="window.print()" class="ml-2 bg-lake-600 hover:bg-lake-700 text-white px-3.5 py-1.5 rounded-lg text-xs flex items-center space-x-1 shadow-sm transition">
             <i class="fa-solid fa-print"></i>
@@ -123,6 +126,7 @@
       <a href="#day2" class="block px-3 py-2 rounded-md text-base font-medium text-slate-700 hover:bg-lake-50 hover:text-lake-600">Day 2 (9/19) 行程</a>
       <a href="#hotel" class="block px-3 py-2 rounded-md text-base font-medium text-slate-700 hover:bg-lake-50 hover:text-lake-600">力麗溫德姆溫泉酒店</a>
       <a href="#baby-tips" class="block px-3 py-2 rounded-md text-base font-medium text-slate-700 hover:bg-lake-50 hover:text-lake-600">17M寶寶專屬攻略與清單</a>
+      <a href="#photo-story-section" class="block px-3 py-2 rounded-md text-base font-medium text-purple-700 hover:bg-purple-50"><i class="fa-solid fa-camera-retro mr-1.5"></i>旅行照片故事 (GPS 智慧回憶錄)</a>
       <a href="#map-section" class="block px-3 py-2 rounded-md text-base font-medium text-slate-700 hover:bg-lake-50 hover:text-lake-600">Google 地圖與導航路線</a>
       <div class="pt-2">
         <button onclick="window.print()" class="w-full bg-lake-600 text-white py-2 rounded-lg text-sm font-medium">
@@ -187,6 +191,9 @@
       </button>
       <a href="#baby-tips" class="bg-rose-50 hover:bg-rose-100 text-rose-700 text-xs sm:text-sm font-semibold px-4 py-2 rounded-xl transition">
         <i class="fa-solid fa-baby mr-1.5 text-rose-500"></i>17M寶寶清單
+      </a>
+      <a href="#photo-story-section" class="bg-purple-50 hover:bg-purple-100 text-purple-700 text-xs sm:text-sm font-semibold px-4 py-2 rounded-xl transition">
+        <i class="fa-solid fa-camera-retro mr-1.5 text-purple-600"></i>📸 照片故事
       </a>
       <a href="#map-section" class="bg-teal-50 hover:bg-teal-100 text-teal-700 text-xs sm:text-sm font-semibold px-4 py-2 rounded-xl transition">
         <i class="fa-solid fa-location-dot mr-1.5 text-teal-600"></i>地圖導航路線
@@ -1121,6 +1128,695 @@
       }
     }
 
+
+    // ==========================================
+    // 📸 TRAVEL PHOTO STORY & GPS PARSER LOGIC
+    // ==========================================
+
+    const ITINERARY_STOPS = [
+      { id: "start", name: "高雄出發點", lat: 22.6273, lng: 120.3014, day: 1, period: "morning", icon: "fa-car" },
+      { id: "dongshan", name: "東山服務區 (星巴克工作 ＆ 水族隧道)", lat: 23.2758, lng: 120.3995, day: 1, period: "morning", icon: "fa-mug-hot" },
+      { id: "desolate", name: "蠻荒咖啡 Desolate Coffee (Day 1 美味午餐)", lat: 23.8828, lng: 120.9135, day: 1, period: "afternoon", icon: "fa-utensils" },
+      { id: "xiangshan", name: "向山行政暨遊客中心 ＆ 惠蓀咖啡", lat: 23.8519, lng: 120.9022, day: 1, period: "afternoon", icon: "fa-landmark" },
+      { id: "wyndham", name: "力麗溫德姆溫泉酒店 (住宿 ＆ 泳池)", lat: 23.8596, lng: 120.9312, day: 1, period: "afternoon", icon: "fa-hotel" },
+      { id: "itathao", name: "伊達邵老街商圈 ＆ 碼頭水岸", lat: 23.8615, lng: 120.9304, day: 1, period: "evening", icon: "fa-bag-shopping" },
+      { id: "cablecar", name: "日月潭纜車 (伊達邵站)", lat: 23.8524, lng: 120.9348, day: 2, period: "morning", icon: "fa-cable-car" },
+      { id: "earthhouse", name: "土角厝水上庭園旋轉餐廳", lat: 23.9482, lng: 120.9255, day: 2, period: "afternoon", icon: "fa-bowl-food" },
+      { id: "conas", name: "Cona's 妮娜巧克力夢想城堡", lat: 23.9421, lng: 120.9298, day: 2, period: "afternoon", icon: "fa-chess-rook" },
+      { id: "gukeng", name: "古坑服務區 (回程中繼站)", lat: 23.6331, lng: 120.5786, day: 2, period: "evening", icon: "fa-coffee" }
+    ];
+
+    const DEMO_PHOTOS = [
+      {
+        id: "demo_1",
+        title: "東山休息站 ‧ 爸爸星巴克辦公 ＆ 寶寶看大水族箱",
+        imgUrl: "https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?auto=format&fit=crop&w=1000&q=80",
+        lat: 23.2758,
+        lng: 120.3995,
+        dateTaken: "2026-09-18T10:15:00",
+        spotId: "dongshan",
+        spotName: "東山服務區 (星巴克工作 ＆ 水族隧道)",
+        tags: ["爸爸", "媽媽", "小寶貝"],
+        caption: "爸爸在星巴克專注開會處理郵件，媽媽抱著小女兒在海底隧道前看著大魚游過，小手一直指著大魚牙牙學語超興奮！"
+      },
+      {
+        id: "demo_2",
+        title: "蠻荒咖啡 ‧ 白色玻璃屋午餐 ＆ 寶寶高腳椅",
+        imgUrl: "https://images.unsplash.com/photo-1554118811-1e0d58224f24?auto=format&fit=crop&w=1000&q=80",
+        lat: 23.8828,
+        lng: 120.9135,
+        dateTaken: "2026-09-18T12:40:00",
+        spotId: "desolate",
+        spotName: "蠻荒咖啡 Desolate Coffee (Day 1 美味午餐)",
+        tags: ["全家福", "美食風景", "小寶貝"],
+        caption: "台21線最美白色建築！現點現做海鮮義麵與黑松露燉飯香氣四溢，小寶貝乖乖坐在高腳椅上啃麵包條看窗外滿山綠意。"
+      },
+      {
+        id: "demo_3",
+        title: "向山遊客中心 ‧ 清水模斜坡散步 ＆ 推車小睡充電",
+        imgUrl: "https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1000&q=80",
+        lat: 23.8519,
+        lng: 120.9022,
+        dateTaken: "2026-09-18T14:15:00",
+        spotId: "xiangshan",
+        spotName: "向山行政暨遊客中心 ＆ 惠蓀咖啡",
+        tags: ["小寶貝", "媽媽", "美食風景"],
+        caption: "團紀彥清水模大長斜坡超好推推車，迎著微風小女兒在推車裡沉沉午睡，媽媽悠閒品嚐惠蓀冷萃咖啡與所長茶葉蛋。"
+      },
+      {
+        id: "demo_4",
+        title: "力麗溫德姆 ‧ 媽媽帶小女兒 3F 兒童水療池玩水",
+        imgUrl: "https://images.unsplash.com/photo-1576013551627-0cc20b96c2a7?auto=format&fit=crop&w=1000&q=80",
+        lat: 23.8596,
+        lng: 120.9312,
+        dateTaken: "2026-09-18T16:00:00",
+        spotId: "wyndham",
+        spotName: "力麗溫德姆溫泉酒店 (住宿 ＆ 泳池)",
+        tags: ["小寶貝", "媽媽"],
+        caption: "午睡充飽電的小女兒換上防水尿布，由媽媽帶到戶外兒童淺水池拍水嬉鬧，笑聲連連活力十足！"
+      },
+      {
+        id: "demo_5",
+        title: "溫德姆客房 ‧ 爸爸安靜專注遠端辦公",
+        imgUrl: "https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?auto=format&fit=crop&w=1000&q=80",
+        lat: 23.8597,
+        lng: 120.9313,
+        dateTaken: "2026-09-18T16:45:00",
+        spotId: "wyndham",
+        spotName: "力麗溫德姆溫泉酒店 (住宿 ＆ 泳池)",
+        tags: ["爸爸"],
+        caption: "房間寬敞靜謐，配備獨立辦公桌椅與高速 Wi-Fi，專注辦公兩小時，下班直接切換度假泡湯模式！"
+      },
+      {
+        id: "demo_6",
+        title: "伊達邵老街外帶 ‧ 房內零壓力開飯享受在地小吃",
+        imgUrl: "https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=1000&q=80",
+        lat: 23.8615,
+        lng: 120.9304,
+        dateTaken: "2026-09-18T18:30:00",
+        spotId: "itathao",
+        spotName: "伊達邵老街商圈 ＆ 碼頭水岸",
+        tags: ["全家福", "美食風景", "小寶貝"],
+        caption: "下樓 2 分鐘買回熱氣騰騰的飯飯雞翅、年記炸香菇高麗菜包與鱸魚豆腐湯，全家回房吹冷氣自在吃，小女兒吃得開心又健康。"
+      },
+      {
+        id: "demo_7",
+        title: "日月潭纜車 ‧ 360度水晶車廂俯瞰米其林湖景",
+        imgUrl: "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1000&q=80",
+        lat: 23.8524,
+        lng: 120.9348,
+        dateTaken: "2026-09-19T10:45:00",
+        spotId: "cablecar",
+        spotName: "日月潭纜車 (伊達邵站)",
+        tags: ["全家福", "小寶貝", "爸爸", "媽媽"],
+        caption: "跨越卜吉山凌空俯瞰湖光水色！小寶貝趴在車窗旁看得目不轉睛，全家留下壯麗高空合照。"
+      },
+      {
+        id: "demo_8",
+        title: "妮娜巧克力夢想城堡 ‧ 歐式宮廷華麗變裝拍照",
+        imgUrl: "https://images.unsplash.com/photo-1513519245088-0e12902e5a38?auto=format&fit=crop&w=1000&q=80",
+        lat: 23.9421,
+        lng: 120.9298,
+        dateTaken: "2026-09-19T14:30:00",
+        spotId: "conas",
+        spotName: "Cona's 妮娜巧克力夢想城堡",
+        tags: ["媽媽", "小寶貝", "全家福"],
+        caption: "室內冷氣電梯無障礙！全家穿上歐洲宮廷斗篷化身公爵，小女兒穿小公主披風萌度破表，還吃到得獎黑巧克力！"
+      }
+    ];
+
+    let userPhotos = [];
+    let currentStoryMode = 'timeline'; // 'timeline' | 'itinerary' | 'people'
+    let currentPersonFilter = 'all';
+    let photoMarkersLayer = null;
+
+    // Haversine Distance
+    function getDistanceKm(lat1, lon1, lat2, lon2) {
+      const R = 6371;
+      const dLat = (lat2 - lat1) * Math.PI / 180;
+      const dLon = (lon2 - lon1) * Math.PI / 180;
+      const a = Math.sin(dLat/2) * Math.sin(dLat/2) +
+                Math.cos(lat1 * Math.PI / 180) * Math.cos(lat2 * Math.PI / 180) *
+                Math.sin(dLon/2) * Math.sin(dLon/2);
+      const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
+      return R * c;
+    }
+
+    // Auto Match Spot
+    function matchSpot(lat, lng, dateObj) {
+      if (lat != null && lng != null) {
+        let bestSpot = null;
+        let minDist = 999999;
+        ITINERARY_STOPS.forEach(spot => {
+          const d = getDistanceKm(lat, lng, spot.lat, spot.lng);
+          if (d < minDist) {
+            minDist = d;
+            bestSpot = spot;
+          }
+        });
+        if (bestSpot && minDist <= 4.0) {
+          return { ...bestSpot, matchedBy: 'gps', distanceKm: minDist.toFixed(1) };
+        }
+      }
+
+      if (dateObj instanceof Date && !isNaN(dateObj)) {
+        const h = dateObj.getHours();
+        const d = dateObj.getDate();
+        if (d === 19) {
+          if (h < 12) return { ...ITINERARY_STOPS.find(s => s.id === 'cablecar'), matchedBy: 'time' };
+          if (h < 14) return { ...ITINERARY_STOPS.find(s => s.id === 'earthhouse'), matchedBy: 'time' };
+          if (h < 16) return { ...ITINERARY_STOPS.find(s => s.id === 'conas'), matchedBy: 'time' };
+          return { ...ITINERARY_STOPS.find(s => s.id === 'gukeng'), matchedBy: 'time' };
+        } else {
+          if (h < 10) return { ...ITINERARY_STOPS.find(s => s.id === 'start'), matchedBy: 'time' };
+          if (h < 12) return { ...ITINERARY_STOPS.find(s => s.id === 'dongshan'), matchedBy: 'time' };
+          if (h < 14) return { ...ITINERARY_STOPS.find(s => s.id === 'desolate'), matchedBy: 'time' };
+          if (h < 15) return { ...ITINERARY_STOPS.find(s => s.id === 'xiangshan'), matchedBy: 'time' };
+          if (h < 17) return { ...ITINERARY_STOPS.find(s => s.id === 'wyndham'), matchedBy: 'time' };
+          return { ...ITINERARY_STOPS.find(s => s.id === 'itathao'), matchedBy: 'time' };
+        }
+      }
+
+      return { ...ITINERARY_STOPS[3], matchedBy: 'default' };
+    }
+
+    // Format Date Time
+    function formatTimeDisplay(isoStr) {
+      if (!isoStr) return '';
+      const d = new Date(isoStr);
+      if (isNaN(d)) return isoStr;
+      const m = (d.getMonth() + 1).toString().padStart(2, '0');
+      const day = d.getDate().toString().padStart(2, '0');
+      const h = d.getHours().toString().padStart(2, '0');
+      const min = d.getMinutes().toString().padStart(2, '0');
+      return `${m}/${day} ${h}:${min}`;
+    }
+
+    // Handle File Upload
+    async function handlePhotoUpload(event) {
+      const files = event.target.files;
+      if (!files || files.length === 0) return;
+
+      const statusEl = document.getElementById('upload-status');
+      statusEl.classList.remove('hidden');
+
+      for (let i = 0; i < files.length; i++) {
+        const file = files[i];
+        let lat = null, lng = null, dateTaken = null;
+
+        try {
+          if (window.exifr) {
+            const exif = await exifr.parse(file, { gps: true, tiff: true, xmp: true });
+            if (exif) {
+              if (exif.latitude !== undefined && exif.longitude !== undefined) {
+                lat = Number(exif.latitude);
+                lng = Number(exif.longitude);
+              }
+              if (exif.DateTimeOriginal) dateTaken = new Date(exif.DateTimeOriginal);
+              else if (exif.CreateDate) dateTaken = new Date(exif.CreateDate);
+            }
+          }
+        } catch (e) {
+          console.warn('EXIF parse issue for file:', file.name, e);
+        }
+
+        if (!dateTaken) {
+          dateTaken = new Date(file.lastModified || Date.now());
+        }
+
+        const matched = matchSpot(lat, lng, dateTaken);
+        const objUrl = URL.createObjectURL(file);
+
+        userPhotos.push({
+          id: 'photo_' + Date.now() + '_' + Math.random().toString(36).substr(2, 6),
+          title: file.name.replace(/\.[^/.]+$/, ""),
+          imgUrl: objUrl,
+          lat: lat,
+          lng: lng,
+          dateTaken: dateTaken.toISOString(),
+          spotId: matched.id,
+          spotName: matched.name,
+          tags: ["小寶貝", "全家福"],
+          caption: `在【${matched.name}】的美好時光紀錄`
+        });
+      }
+
+      statusEl.classList.add('hidden');
+      event.target.value = '';
+      renderPhotoStory();
+    }
+
+    // Load Demo Photos
+    function loadDemoPhotos() {
+      userPhotos = JSON.parse(JSON.stringify(DEMO_PHOTOS));
+      renderPhotoStory();
+    }
+
+    // Clear All Photos
+    function clearAllPhotos() {
+      userPhotos = [];
+      renderPhotoStory();
+    }
+
+    // Story Mode Switch
+    function switchStoryMode(mode) {
+      currentStoryMode = mode;
+      document.querySelectorAll('.story-tab').forEach(b => {
+        b.classList.remove('bg-white', 'text-purple-700', 'shadow-xs', 'active');
+        b.classList.add('text-slate-600');
+      });
+      const activeBtn = document.getElementById('tab-' + mode);
+      if (activeBtn) {
+        activeBtn.classList.remove('text-slate-600');
+        activeBtn.classList.add('bg-white', 'text-purple-700', 'shadow-xs', 'active');
+      }
+
+      const subfilters = document.getElementById('people-subfilters');
+      if (mode === 'people') {
+        subfilters.classList.remove('hidden');
+      } else {
+        subfilters.classList.add('hidden');
+      }
+
+      renderPhotoStory();
+    }
+
+    // Person Filter
+    function setPersonFilter(person) {
+      currentPersonFilter = person;
+      document.querySelectorAll('.person-btn').forEach(b => {
+        b.classList.remove('bg-purple-600', 'text-white', 'active');
+        b.classList.add('bg-white', 'text-purple-900');
+      });
+      if (event && event.currentTarget) {
+        event.currentTarget.classList.remove('bg-white', 'text-purple-900');
+        event.currentTarget.classList.add('bg-purple-600', 'text-white', 'active');
+      }
+      renderPhotoStory();
+    }
+
+    // Toggle Tag on Photo
+    function togglePhotoTag(photoId, tag) {
+      const p = userPhotos.find(item => item.id === photoId);
+      if (!p) return;
+      if (p.tags.includes(tag)) {
+        p.tags = p.tags.filter(t => t !== tag);
+      } else {
+        p.tags.push(tag);
+      }
+      renderPhotoStory();
+    }
+
+    // Change Photo Spot
+    function changePhotoSpot(photoId, spotId) {
+      const p = userPhotos.find(item => item.id === photoId);
+      const spot = ITINERARY_STOPS.find(s => s.id === spotId);
+      if (p && spot) {
+        p.spotId = spot.id;
+        p.spotName = spot.name;
+        if (p.lat == null) {
+          p.lat = spot.lat;
+          p.lng = spot.lng;
+        }
+        renderPhotoStory();
+      }
+    }
+
+    // Update Photo Caption
+    function updatePhotoCaption(photoId, newCaption) {
+      const p = userPhotos.find(item => item.id === photoId);
+      if (p) {
+        p.caption = newCaption;
+        updateMapPhotoMarkers();
+      }
+    }
+
+    // Delete Single Photo
+    function deletePhoto(photoId) {
+      userPhotos = userPhotos.filter(p => p.id !== photoId);
+      renderPhotoStory();
+    }
+
+    // Generate Narrative Story
+    function generateNarrative(photos, mode, person) {
+      if (!photos || photos.length === 0) {
+        return {
+          title: "尚未載入照片",
+          body: "請點擊上方「上傳照片」選取手機照片，或點擊「載入示範照片 (Demo)」搶先體驗依據 GPS 與時間自動編排的精彩旅行故事！",
+          meta: "💡 系統將自動根據經緯度辨識景點並依據主角生成暖心回憶"
+        };
+      }
+
+      const count = photos.length;
+      const gpsCount = photos.filter(p => p.lat != null && p.lng != null).length;
+
+      if (mode === 'people') {
+        if (person === '小寶貝') {
+          return {
+            title: "👧 17 個月大小寶貝的日月潭成長大冒險",
+            body: "這趟兩天一夜的日月潭慢活之旅，是小女兒人生第 17 個月最閃閃發光的成長印記！\n\n" +
+                  "從東山服務區興奮地趴在海底隧道玻璃前看大魚游過，到向山遊客中心清水模緩坡上乘著徐徐涼風安穩午睡；入住力麗溫德姆後精神奕奕地套上小泳圈、在 3F 兒童戲水池踏水嬉鬧；" +
+                  "晚上回到寬敞客房大口吃著鮮魚豆腐粥；第二天搭乘高空纜車時睜著好奇大眼睛俯瞰湖光山色、在妮娜巧克力城堡穿上小公主斗篷萌翻全場！每一張照片都是寶貝成長最甜的印記。",
+            meta: `收錄了 ${count} 篇小寶貝的珍貴成長記錄 ‧ 包含 ${gpsCount} 個打卡座標`
+          };
+        } else if (person === '爸爸') {
+          return {
+            title: "👨 爸爸的 Work-Life Balance 休日哲學",
+            body: "誰說帶著家人度假不能同時兼顧高效率工作？\n\n" +
+                  "上午在東山服務區星巴克伴隨著濃醇咖啡香敲擊鍵盤，專注推進代碼與公事；午後入住力麗溫德姆客房，在寬敞明亮的辦公書桌前一邊欣賞窗外山景、一邊高效召開遠端視訊會議。\n\n" +
+                  "公事告一段落後，無縫切換全職奶爸模式：陪女兒在客房專屬美人湯戲水、牽著老婆漫步伊達邵老街採買熱騰騰飯飯雞翅。兼具責任與溫度的休日，正是爸爸最充實的幸福！",
+            meta: `收錄了 ${count} 篇爸爸的自駕、行動辦公與親子陪伴時光`
+          };
+        } else if (person === '媽媽') {
+          return {
+            title: "👩 媽媽的湖畔美拍與身心放鬆假期",
+            body: "暫時拋開日常育兒的忙碌繁瑣，在日月潭的湖光山色中重新找回悠然自得。\n\n" +
+                  "在白色玻璃屋「蠻荒咖啡」與向山無邊際水池前拍下絕美生活美照；在向山清水模長斜坡上推著推車吹著微風，享受女兒入睡後那段專屬於自己的惠蓀冷萃咖啡時光；" +
+                  "傍晚帶著寶貝在溫德姆戶外水療池盡情玩水，夜晚更浸泡在客房私湯碳酸氫鈉泉中深度舒緩筋骨。這是一場視覺、味覺與心靈的大滿足！",
+            meta: `收錄了 ${count} 篇媽媽的絕美湖畔日常與育兒充電日記`
+          };
+        } else if (person === '全家福') {
+          return {
+            title: "👨‍👩‍👧 大衛一家三口 ‧ 日月潭甜蜜合照集",
+            body: "一家三口自駕啟程，車內洋溢著笑聲與輕快音樂。\n\n" +
+                  "在蠻荒咖啡白色窗邊的甜蜜依偎、在伊達邵水岸老街買好小吃回房圍坐開飯的溫暖日常、在日月潭纜車俯瞰湖面的同框合影，以及在妮娜巧克力城堡變裝歐洲貴族的趣味同樂！" +
+                  "這趟旅程讓彼此的心更加貼近，每一張全家合照都是永恆的甜蜜典藏。",
+            meta: `收錄了 ${count} 張一家三口甜蜜合影 ‧ 幸福滿載`
+          };
+        } else if (person === '美食風景') {
+          return {
+            title: "🏞️ 日月潭湖光山色與在地極致尋味",
+            body: "兩天一夜的美食地圖大收穫！\n\n" +
+                  "台21線絕美「蠻荒咖啡」現做清炒海鮮義麵、向山遊客中心惠蓀手沖咖啡與所長茶葉蛋；伊達邵老街現烤去骨「飯飯雞翅」、酥脆「年記香菇高麗菜包」與得獎「TEA18 紅玉冷泡茶」；" +
+                  "第二天更有土角厝水上旋轉餐廳的清爽客家土雞料理，以及妮娜城堡世界金牌黑巧克力。用舌尖與鏡頭，深深記住南投的美好滋味！",
+            meta: `收錄了 ${count} 道精選在地名餚與山光水色`
+          };
+        }
+      }
+
+      if (mode === 'itinerary') {
+        return {
+          title: "📍 依循湖畔景點 ‧ 串起各站美好記憶",
+          body: "這趟自駕旅程串連了 10 大代表性站點：從台南東山休息站的深海驚喜，一路來到台21線白色玻璃屋與向山清水模；在伊達邵的核心享受溫德姆溫泉的尊榮舒活與老街夜市的熱鬧滋味；" +
+                "第二天更凌空飛越卜吉山俯瞰整座水沙連，並在埔里桃米的水上旋轉包廂與巧克力夢想城堡留下滿滿歡笑。依照景點分門別類，每個轉角都是故事！",
+          meta: `共涵蓋日月潭與國道重要站點 ‧ 累計 ${count} 張回憶照片`
+        };
+      }
+
+      // Default: Timeline
+      return {
+        title: "⏰ 兩天一夜慢活時間軸 ‧ 依序重溫美好時光",
+        body: "從高雄自駕出發，歷經早晨的國道晨光、中午的景觀咖啡午餐、下午的向山漫步與飯店泳池嬉水，到夜晚的客房私湯與老街小吃；\n\n" +
+              "第二天清晨悠閒享用早午餐後，搭上水晶高空纜車俯瞰米其林三星湖景，午後再到水上旋轉餐廳與巧克力城堡體驗宮廷變裝。依照時間脈絡一張張翻閱，彷彿又重新踏上了這趟幸福洋溢的日月潭充電之旅！",
+        meta: `依時間先後排序 ‧ 共 ${count} 張照片（${gpsCount} 張帶有 GPS 定位座標）`
+      };
+    }
+
+    // Copy Story Narrative
+    function copyStoryText() {
+      const title = document.getElementById('narrative-title').innerText;
+      const body = document.getElementById('narrative-body').innerText;
+      const fullText = title + "\n\n" + body;
+      navigator.clipboard.writeText(fullText).then(() => {
+        const btnLabel = document.getElementById('copy-btn-label');
+        btnLabel.innerText = "已複製！";
+        setTimeout(() => { btnLabel.innerText = "複製日記文字"; }, 2000);
+      });
+    }
+
+    // Render Tag Badges
+    function renderPhotoTagButtons(photo) {
+      const availableTags = ["小寶貝", "爸爸", "媽媽", "全家福", "美食風景"];
+      const icons = {
+        "小寶貝": "fa-baby",
+        "爸爸": "fa-user-tie",
+        "媽媽": "fa-heart",
+        "全家福": "fa-users",
+        "美食風景": "fa-camera"
+      };
+
+      return availableTags.map(tag => {
+        const active = photo.tags.includes(tag);
+        const cls = active 
+          ? "bg-purple-600 text-white font-bold border-purple-600 shadow-2xs" 
+          : "bg-slate-100 hover:bg-slate-200 text-slate-600 border-slate-200 font-medium";
+        return `
+          <button onclick="togglePhotoTag('${photo.id}', '${tag}')" class="text-[11px] px-2.5 py-1 rounded-lg border ${cls} transition flex items-center space-x-1">
+            <i class="fa-solid ${icons[tag]}"></i>
+            <span>${tag}</span>
+          </button>
+        `;
+      }).join('');
+    }
+
+    // Render Main Photo Story
+    function renderPhotoStory() {
+      const container = document.getElementById('photos-display-container');
+      const counterEl = document.getElementById('photo-counter-info');
+
+      // Update counter
+      const totalCount = userPhotos.length;
+      const gpsCount = userPhotos.filter(p => p.lat != null && p.lng != null).length;
+      counterEl.innerHTML = `<i class="fa-solid fa-camera mr-1 text-purple-600"></i>已載入 <strong>${totalCount}</strong> 張照片 ‧ <strong>${gpsCount}</strong> 張含 GPS 座標`;
+
+      // Filter photos based on mode & subfilter
+      let displayPhotos = [...userPhotos];
+      if (currentStoryMode === 'people' && currentPersonFilter !== 'all') {
+        displayPhotos = displayPhotos.filter(p => p.tags.includes(currentPersonFilter));
+      }
+
+      // Sort by date
+      displayPhotos.sort((a, b) => new Date(a.dateTaken) - new Date(b.dateTaken));
+
+      // Update Narrative Card
+      const narrative = generateNarrative(displayPhotos, currentStoryMode, currentPersonFilter);
+      document.getElementById('narrative-title').innerText = narrative.title;
+      document.getElementById('narrative-body').innerText = narrative.body;
+      document.getElementById('narrative-meta').innerHTML = `
+        <span><i class="fa-solid fa-sparkles text-amber-300 mr-1"></i>${narrative.meta}</span>
+        <span>•</span>
+        <span><i class="fa-solid fa-location-dot text-emerald-400 mr-1"></i>已即時標註於下方 Leaflet 導航地圖</span>
+      `;
+
+      if (displayPhotos.length === 0) {
+        container.innerHTML = `
+          <div class="bg-white rounded-2xl p-12 text-center border border-slate-200 shadow-sm space-y-3">
+            <div class="w-16 h-16 rounded-full bg-purple-50 text-purple-500 mx-auto flex items-center justify-center text-2xl">
+              <i class="fa-solid fa-camera-rotate"></i>
+            </div>
+            <h4 class="text-lg font-bold text-slate-800">目前尚無此篩選條件的照片</h4>
+            <p class="text-sm text-slate-500 max-w-md mx-auto">
+              您可以點擊上方「載入示範照片 (Demo)」搶先看，或上傳手機實拍照片！
+            </p>
+          </div>
+        `;
+        updateMapPhotoMarkers();
+        return;
+      }
+
+      // 1. Timeline View
+      if (currentStoryMode === 'timeline') {
+        container.innerHTML = `
+          <div class="relative pl-6 sm:pl-8 border-l-2 border-purple-300 space-y-8 ml-3 sm:ml-4 pt-2">
+            ${displayPhotos.map(p => `
+              <div class="relative bg-white rounded-2xl p-4 sm:p-5 border border-slate-200 shadow-sm hover:shadow-md transition">
+                <div class="absolute -left-[31px] sm:-left-[39px] top-4 w-4 h-4 rounded-full bg-purple-600 border-4 border-white shadow-xs"></div>
+                
+                <div class="flex flex-wrap items-center justify-between gap-2 mb-3">
+                  <div class="flex items-center space-x-2">
+                    <span class="badge-pill bg-purple-100 text-purple-800 font-bold text-xs">
+                      <i class="fa-regular fa-clock mr-1"></i>${formatTimeDisplay(p.dateTaken)}
+                    </span>
+                    <span class="badge-pill ${p.lat ? 'bg-emerald-50 text-emerald-700 border border-emerald-200' : 'bg-slate-100 text-slate-600'} text-xs">
+                      <i class="fa-solid fa-location-dot mr-1 text-emerald-600"></i>${p.lat ? 'GPS定位' : '行程比對'}
+                    </span>
+                  </div>
+                  <button onclick="deletePhoto('${p.id}')" class="text-slate-400 hover:text-rose-500 text-xs p-1 transition" title="刪除照片">
+                    <i class="fa-regular fa-trash-can"></i>
+                  </button>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-12 gap-4">
+                  <div class="md:col-span-5">
+                    <div class="img-zoom-container rounded-xl overflow-hidden shadow-xs">
+                      <img src="${p.imgUrl}" alt="${p.title}" class="w-full h-48 sm:h-52 object-cover" loading="lazy">
+                    </div>
+                  </div>
+                  <div class="md:col-span-7 flex flex-col justify-between space-y-3">
+                    <div class="space-y-2">
+                      <div class="flex items-center space-x-2">
+                        <label class="text-xs font-semibold text-slate-500">行程站點：</label>
+                        <select onchange="changePhotoSpot('${p.id}', this.value)" class="text-xs bg-slate-50 border border-slate-200 rounded-lg px-2.5 py-1 text-slate-800 font-semibold focus:outline-purple-500">
+                          ${ITINERARY_STOPS.map(s => `
+                            <option value="${s.id}" ${s.id === p.spotId ? 'selected' : ''}>${s.name}</option>
+                          `).join('')}
+                        </select>
+                      </div>
+
+                      <!-- Editable Caption -->
+                      <div>
+                        <label class="text-xs font-semibold text-slate-500 block mb-1">當下故事筆記：</label>
+                        <textarea onblur="updatePhotoCaption('${p.id}', this.value)" class="w-full text-xs text-slate-700 bg-slate-50/80 border border-slate-200 rounded-xl p-2.5 focus:bg-white focus:outline-purple-500 transition resize-none leading-relaxed" rows="2">${p.caption || ''}</textarea>
+                      </div>
+                    </div>
+
+                    <!-- Tags -->
+                    <div class="pt-2 border-t border-slate-100 flex flex-wrap gap-1.5 items-center">
+                      <span class="text-[11px] text-slate-400 font-medium mr-1">主角標籤：</span>
+                      ${renderPhotoTagButtons(p)}
+                    </div>
+                  </div>
+                </div>
+              </div>
+            `).join('')}
+          </div>
+        `;
+      }
+
+      // 2. Itinerary View (Grouped by Spot)
+      else if (currentStoryMode === 'itinerary') {
+        const groups = {};
+        ITINERARY_STOPS.forEach(s => { groups[s.id] = []; });
+        displayPhotos.forEach(p => {
+          if (!groups[p.spotId]) groups[p.spotId] = [];
+          groups[p.spotId].push(p);
+        });
+
+        const activeSpotIds = ITINERARY_STOPS.filter(s => groups[s.id].length > 0);
+
+        container.innerHTML = `
+          <div class="space-y-8">
+            ${activeSpotIds.map(spot => `
+              <div class="bg-white rounded-2xl p-5 sm:p-6 border border-slate-200 shadow-sm space-y-4">
+                <div class="flex flex-wrap items-center justify-between border-b border-slate-100 pb-3 gap-2">
+                  <div class="flex items-center space-x-2">
+                    <div class="w-8 h-8 rounded-lg bg-purple-100 text-purple-700 flex items-center justify-center font-bold text-sm">
+                      <i class="fa-solid ${spot.icon}"></i>
+                    </div>
+                    <h3 class="font-extrabold text-slate-900 text-base sm:text-lg">${spot.name}</h3>
+                    <span class="badge-pill bg-purple-50 text-purple-700 text-xs font-bold">${groups[spot.id].length} 張照片</span>
+                  </div>
+                  <a href="#map-section" class="text-xs font-semibold text-lake-600 hover:text-lake-700 flex items-center space-x-1">
+                    <i class="fa-solid fa-map-location-dot"></i>
+                    <span>在地圖中查看</span>
+                  </a>
+                </div>
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+                  ${groups[spot.id].map(p => `
+                    <div class="bg-slate-50 rounded-xl overflow-hidden border border-slate-200/80 flex flex-col justify-between">
+                      <div>
+                        <div class="img-zoom-container relative">
+                          <img src="${p.imgUrl}" alt="${p.title}" class="w-full h-40 object-cover" loading="lazy">
+                          <span class="absolute bottom-2 left-2 badge-pill bg-black/60 text-white text-[10px] backdrop-blur-xs">
+                            ${formatTimeDisplay(p.dateTaken)}
+                          </span>
+                        </div>
+                        <div class="p-3">
+                          <p class="text-xs text-slate-700 line-clamp-2 leading-relaxed font-normal">${p.caption || ''}</p>
+                        </div>
+                      </div>
+                      <div class="p-3 pt-0 border-t border-slate-200/60 mt-1 flex flex-wrap gap-1 items-center">
+                        ${renderPhotoTagButtons(p)}
+                      </div>
+                    </div>
+                  `).join('')}
+                </div>
+              </div>
+            `).join('')}
+          </div>
+        `;
+      }
+
+      // 3. People Focus View
+      else if (currentStoryMode === 'people') {
+        container.innerHTML = `
+          <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-5">
+            ${displayPhotos.map(p => `
+              <div class="bg-white rounded-2xl overflow-hidden border border-slate-200 shadow-sm hover:shadow-md transition flex flex-col justify-between">
+                <div>
+                  <div class="img-zoom-container relative">
+                    <img src="${p.imgUrl}" alt="${p.title}" class="w-full h-48 object-cover" loading="lazy">
+                    <div class="absolute top-2 right-2">
+                      <button onclick="deletePhoto('${p.id}')" class="bg-black/50 hover:bg-rose-600 text-white w-7 h-7 rounded-full flex items-center justify-center text-xs backdrop-blur-xs transition">
+                        <i class="fa-solid fa-trash-can"></i>
+                      </button>
+                    </div>
+                    <div class="absolute bottom-2 left-2 flex items-center space-x-1.5">
+                      <span class="badge-pill bg-black/60 text-white text-[10px] backdrop-blur-xs">
+                        <i class="fa-regular fa-clock mr-1"></i>${formatTimeDisplay(p.dateTaken)}
+                      </span>
+                      ${p.lat ? '<span class="badge-pill bg-emerald-600/80 text-white text-[10px] backdrop-blur-xs"><i class="fa-solid fa-location-dot mr-0.5"></i>GPS</span>' : ''}
+                    </div>
+                  </div>
+
+                  <div class="p-4 space-y-2.5">
+                    <div class="flex items-center space-x-1.5 text-xs text-purple-700 font-bold">
+                      <i class="fa-solid fa-map-pin"></i>
+                      <span class="truncate">${p.spotName}</span>
+                    </div>
+                    <textarea onblur="updatePhotoCaption('${p.id}', this.value)" class="w-full text-xs text-slate-700 bg-slate-50 border border-slate-200 rounded-xl p-2.5 focus:bg-white focus:outline-purple-500 transition resize-none leading-relaxed" rows="2">${p.caption || ''}</textarea>
+                  </div>
+                </div>
+
+                <div class="p-4 pt-0 border-t border-slate-100 flex flex-wrap gap-1 items-center">
+                  ${renderPhotoTagButtons(p)}
+                </div>
+              </div>
+            `).join('')}
+          </div>
+        `;
+      }
+
+      updateMapPhotoMarkers();
+    }
+
+    // Leaflet Map Photo Markers Integration
+    function updateMapPhotoMarkers() {
+      if (!window.travelMap) return;
+      if (!photoMarkersLayer) {
+        photoMarkersLayer = L.layerGroup().addTo(window.travelMap);
+      } else {
+        photoMarkersLayer.clearLayers();
+      }
+
+      userPhotos.forEach(p => {
+        if (p.lat != null && p.lng != null) {
+          const photoIcon = L.divIcon({
+            className: 'custom-photo-marker',
+            html: `
+              <div style="width: 32px; height: 32px; border-radius: 50%; background: #7c3aed; color: white; border: 2px solid white; box-shadow: 0 2px 8px rgba(0,0,0,0.3); display: flex; align-items: center; justify-content: center; font-size: 13px; cursor: pointer; transition: transform 0.2s;">
+                <i class="fa-solid fa-camera"></i>
+              </div>
+            `,
+            iconSize: [32, 32],
+            iconAnchor: [16, 16]
+          });
+
+          const marker = L.marker([p.lat, p.lng], { icon: photoIcon })
+            .bindPopup(`
+              <div style="width: 200px; font-family: sans-serif;">
+                <img src="${p.imgUrl}" style="width: 100%; height: 110px; object-fit: cover; border-radius: 8px; margin-bottom: 6px;">
+                <div style="font-size: 11px; color: #7c3aed; font-weight: bold; margin-bottom: 2px;">
+                  📍 ${p.spotName}
+                </div>
+                <div style="font-size: 10px; color: #64748b; margin-bottom: 4px;">
+                  🕒 ${formatTimeDisplay(p.dateTaken)}
+                </div>
+                <div style="font-size: 12px; color: #1e293b; line-height: 1.35; margin-bottom: 6px;">
+                  ${p.caption || ''}
+                </div>
+                <div style="display: flex; flex-wrap: wrap; gap: 3px;">
+                  ${p.tags.map(t => `<span style="font-size: 9px; background: #f3e8ff; color: #6b21a8; padding: 2px 6px; border-radius: 9999px; font-weight: bold;">${t}</span>`).join('')}
+                </div>
+              </div>
+            `);
+
+          photoMarkersLayer.addLayer(marker);
+        }
+      });
+    }
+
     // LocalStorage for Baby Checklist
     function initChecklist() {
       const checkboxes = document.querySelectorAll('#baby-tips input[type="checkbox"]');
@@ -1145,6 +1841,7 @@
     // Initialize Map with Leaflet
     function initMap() {
       const map = L.map('map').setView([23.45, 120.65], 8);
+      window.travelMap = map;
 
       L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
         attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
@@ -1249,6 +1946,7 @@
     document.addEventListener('DOMContentLoaded', () => {
       initChecklist();
       initMap();
+      loadDemoPhotos();
     });
   </script>
 </body>
